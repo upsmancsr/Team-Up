@@ -10,6 +10,14 @@ View the original repo with the project I submitted here: https://github.com/ups
 - view all users who have signed up.
 - User info is stored in a MondoDB database provisioned through Heroku and MLab.
 
+## Upcoming Features
+Immediate goals:
+- A user can create a team
+- Admin user (team creator by default) can invite other users to join a team (max 10 users per team)
+- A user can view their team invitations and accept/join teams
+- A user can view a list of their teams
+- A user can select one of their teams to view the other members of the team
+
 ### How to install and run the app
 
 #### Dependencies
