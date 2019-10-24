@@ -6,7 +6,7 @@ View the original repo with the project I submitted here: https://github.com/ups
 
 ## Current Features
 
-- Sign up and sign in as an indivudual
+- Sign up and sign in as a user
 - view all users who have signed up.
 - User info is stored in a MondoDB database provisioned through Heroku and MLab.
 
