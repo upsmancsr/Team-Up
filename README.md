@@ -1,9 +1,6 @@
 # TeamUp
 TeamUp is a web application for teams to collaborate. Built using the MERN stack (MongoDB, Express.js, React, and Node.js).
 
-## Original repo
-View the original repo with the project I submitted here: https://github.com/upsmancsr/CameronRayMakerSightsHW
-
 ## Current Features
 
 - Sign up and sign in as a user
