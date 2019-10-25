@@ -19,7 +19,7 @@ const NavAuth = () => (
     <div className='nav-auth-container'>
         <span>
             {styledNavLink('/', 'Home', 'exact')}
-            {styledNavLink('/useraccount', 'Account')}
+            {styledNavLink('/myteams', 'My Teams')}
             <SignOut />
         </span>
     </div>

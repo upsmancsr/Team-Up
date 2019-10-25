@@ -37,7 +37,7 @@ class MyTeams extends Component {
               teams.map((team, index) => {
                 return (
                   <div className='row' key={index}>
-                    <p><b>Team Name:</b> {user.name}</p>
+                    <p><b>Team Name:</b> {team.name}</p>
                   </div>
                 )
               })

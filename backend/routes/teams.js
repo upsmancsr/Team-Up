@@ -8,9 +8,9 @@ router.get('/', async (req, res) => {
     try {
         const { uid } = req.body;
         const user = await User.findOne({ uid });
-        console.log('user:', user);
+        // console.log('user:', user);
         const teams = await Team.find({ users: user._id });
-        console.log('teams:', teams);
+        // console.log('teams:', teams);
         res.status(200).json(teams);
     }
     catch(error) {
