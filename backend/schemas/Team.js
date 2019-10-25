@@ -18,8 +18,11 @@ const TeamSchema = new Schema({
   }],
   adminUsers: [{
     type: Schema.Types.ObjectId, 
-    ref: 'User'   /* ref is the collection in which the _id is found */
-  }]  
+    ref: 'User'     /* ref is the collection in which the _id is found */
+  }],
+  invitedUsers: [{
+    type: String    /* email addresses for users invited to join team */
+  }] 
 });
 
 // Create Team model from TeamSchema.
