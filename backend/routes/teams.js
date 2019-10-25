@@ -25,7 +25,9 @@ router.get('/singleteam/:teamId', async (req, res) => {
         const { teamId } = req.params;
 
         const user = await User.findOne({ uid });
-        const team = await Team.find({ _id: teamId }, { users: user._id}).select('name users adminUsers');
+        const team = await Team.findOne({ _id: teamId })
+            .populate('users');
+
         console.log('team:', team);
         res.status(200).json(team);
     }
