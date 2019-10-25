@@ -5,8 +5,9 @@ const router = express.Router();
 const validateSignUpInput = require('../reqValidation/validateSignUp');
 const validateSignInInput = require('../reqValidation/validateSignIn');
 
-// Import User model for db:
+// Import MongoDB models:
 const User = require('../schemas/User');
+const Team = require('../schemas/Team');
 
 // POST endpoint to sign up a new user:
 router.post('/signup', async (req, res) => {
@@ -21,32 +22,78 @@ router.post('/signup', async (req, res) => {
     // if (!isValid) {
     //     return res.status(400).json(errors);
     // }
+    try {
 
-    // Use the .findOne method from MongoDB 
-    // (available through the User model)
-    // to check if user already exists:
-    const existingUser = await User.findOne({ uid });
-    console.log('existingUser:', existingUser);
+        // Use the .findOne method from MongoDB 
+        // (available through the User model)
+        // to check if user already exists:
+        const existingUser = await User.findOne({ uid });
+        console.log('existingUser:', existingUser);
 
-    if (existingUser) {
-        return res.status(400).json({ message: 'User already exists', existingUser });
-    } else {
-        const newUser = new User({
-            firstName,
-            lastName,
-            email,
-            uid
-        });
-
-        // save newUser in db using MongoDB .save() method, (available through the User model)
-        // and send appropriate response:
-        newUser
-            .save()
-            .then(user => res.status(200).json(user))
-            .catch(error => {
-                console.log(err);
-                res.status(500).json(error);
+        if (existingUser) {
+            return res.status(400).json({ message: 'User already exists', existingUser });
+        } else {
+            // create a new User for MongoDB:
+            const newUser = new User({
+                firstName,
+                lastName,
+                email,
+                uid
             });
+
+            // save newUser in db using MongoDB .save() method:
+            const user = await newUser.save();
+            console.log('user response from MongoDB:', user);
+
+            // Create a default starting Team for the user:
+            const newTeam = new Team({
+                name: `${firstName} ${lastName}'s Team 1`
+                // users: [user._id]
+                // adminUsers: [user._id]
+            });
+
+            // Push user._id into newTeam users and adminUsers array fields:
+            newTeam.users.push(user._id);
+            newTeam.adminUsers.push(user._id);
+            // save new team in db:
+            const team = await newTeam.save();
+            console.log('team response from MongoDB:', team);
+
+            res.status(200).json({ user, team });
+            
+            // newUser
+            //     .save()
+            //     .then(user => {
+            //         console.log('user response from MongoDB:', user);
+            //         // Create a default starting Team for the user:
+            //         const newTeam = new Team({
+            //             name: `${firstName} ${lastName}'s Team 1`
+            //             // users: [user._id]
+            //             // adminUsers: [user._id]
+            //         });
+            //         // Push user._id into newTeam users and adminUsers array fields:
+            //         newTeam.users.push(user._id);
+            //         newTeam.adminUsers.push(user._id);
+            //         newTeam
+            //             .save()
+            //             .then(team => {
+            //                 console.log('team response from MongoDB:', team);
+            //                 res.status(200).json({ user, team });
+            //             })
+            //             .catch(error => {
+            //                 console.log(error);
+            //                 res.status(500).json(error);
+            //             });
+            //     })
+            //     .catch(error => {
+            //         console.log(error);
+            //         res.status(500).json(error);
+            //     });    
+        }
+    }
+    catch(error) {
+        console.log(error);
+        res.status(500).json(error);
     }
 });
 

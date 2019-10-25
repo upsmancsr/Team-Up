@@ -8,7 +8,9 @@ import NavBar from './components/navigation/NavBar';
 import LandingPage from './components/LandingPage';
 import SignUp from './components/auth/SignUp';
 import SignIn from './components/auth/SignIn';
-import UserAccount from './components/UserAccount';
+// import UserAccount from './components/UserAccount';
+import MyTeams from './components/MyTeams';
+import TeamDashboard from './components/TeamDashboard';
 import { toggleAuthHeader, signOutUser } from './authUtilities';
 import jwt_decode from "jwt-decode";
 import './App.css';
@@ -81,7 +83,8 @@ class AppComponent extends Component {
             <Route path='/' exact component={LandingPage}/>
             <Route exact path='/signup' component={SignUp} />
             <Route exact path='/signin' component={SignIn} />
-            <PrivateRoute path='/useraccount' component={UserAccount} authenticated={this.state.authenticated}/>
+            <PrivateRoute path='/myteams' component={MyTeams} authenticated={this.state.authenticated}/>
+            <PrivateRoute path='/TeamDashboard/:teamId' component={TeamDashboard} authenticated={this.state.authenticated}/>
           </Switch>
         </Router>
       </div>

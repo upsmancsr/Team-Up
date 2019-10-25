@@ -1,0 +1,17 @@
+.TeamDashboard {
+	display: flex;
+	flex-direction: column;
+}
+
+.teamMembersContainer {
+	width: 300px;
+	display: flex;
+	flex-direction: column;
+}
+
+.teamMembersList .row {
+	border: 1px solid grey;
+	border-radius: 10px;
+	padding: 0 12px 0 12px;
+	margin-bottom: 10px;
+}

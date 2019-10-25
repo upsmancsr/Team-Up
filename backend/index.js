@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 // const bodyParser = require('body-parser');
 // const passport = require('passport');
 const usersRoutes = require('./routes/users');
+const teamsRoutes = require('./routes/teams');
+
 
 // Access .env variables with dotenv config:
 require('dotenv').config(); 
@@ -77,6 +79,8 @@ server.use(async (req,res) => {
 // Tie API routes to the relevant file with those endpoints.
 // Requests to these routes will first go throuth the auth middleware above:
 server.use('/api/users', usersRoutes);
+server.use('/api/teams', teamsRoutes);
+
 
 // Define the port where the server will run:
 const port = process.env.PORT || 5000; 

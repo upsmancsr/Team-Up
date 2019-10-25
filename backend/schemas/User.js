@@ -22,14 +22,10 @@ const UserSchema = new Schema({
   dateCreated: {
     type: Date,
     default: Date.now
-  },
-  isAdmin: {
-    type: Boolean,
-    default: false
   }
 });
 
 // Use mongoose .model() method 
 // to convert UserSchema into a MongoDB compatible model;
 // the first arg 'users' defines a new 'users' collection that will utilize the model:
-module.exports = User = mongoose.model('users', UserSchema);
+module.exports = User = mongoose.model('User', UserSchema);
