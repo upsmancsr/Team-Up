@@ -15,6 +15,10 @@ const TeamSchema = new Schema({
   users: [{
     type: Schema.Types.ObjectId, 
     ref: 'User'
+  }],
+  adminUsers: [{
+    type: Schema.Types.ObjectId, 
+    ref: 'User'
   }]
 });
 
