@@ -1,0 +1,14 @@
+.myTeams {
+  display: flex;
+  flex-direction: column; }
+
+.teamsListContainer {
+  width: 300px;
+  display: flex;
+  flex-direction: column; }
+
+.teamsList .row {
+  border: 1px solid grey;
+  border-radius: 10px;
+  padding: 0 12px 0 12px;
+  margin-bottom: 10px; }

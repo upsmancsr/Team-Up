@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import './css/UserAccount.css';
 import styles from '../scss/components/MyTeams.module.scss';
 
 class MyTeams extends Component {
@@ -26,17 +25,16 @@ class MyTeams extends Component {
 
   render() {
     const { teams } = this.state;
-    // console.log(teams);
     return (
-      <div className='user-account-page'>
-        <div className='users-list-container'>
+      <div className={styles.MyTeams}>
+        <div className={styles.teamsListContainer}>
           <h3>Your teams</h3>
 
-          <div className='users-list'>
+          <div className={styles.teamsList}>
             {teams.length > 0 &&
               teams.map((team, index) => {
                 return (
-                  <div className='row' key={index}>
+                  <div className={styles.row} key={index}>
                     <p><b>Team Name:</b> {team.name}</p>
                   </div>
                 )
