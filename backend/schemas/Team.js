@@ -18,8 +18,8 @@ const TeamSchema = new Schema({
   }],
   adminUsers: [{
     type: Schema.Types.ObjectId, 
-    ref: 'User'
-  }]
+    ref: 'User'   /* ref is the collection in which the _id is found */
+  }]  
 });
 
 // Create Team model from TeamSchema.
