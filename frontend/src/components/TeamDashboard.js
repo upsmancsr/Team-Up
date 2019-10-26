@@ -39,6 +39,7 @@ class TeamDashboard extends Component {
                     return (
                     <div className={styles.row} key={index}>
                         <p>{user.firstName} {user.lastName}</p>
+                        <p>{user.email}</p>
                     </div>
                     )
                 })
