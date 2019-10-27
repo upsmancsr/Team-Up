@@ -35,8 +35,10 @@ class MyTeams extends Component {
                     {teams.length > 0 &&
                         teams.map((team, index) => {
                         return (
-                            <Link to={`/TeamDashboard/${team._id}`}className={styles.row} key={index}>
-                            <p><b>Team Name:</b> {team.name}</p>
+                            <Link to={`/TeamDashboard/${team._id}`} key={index}>
+                                <div className={styles.row}>
+                                    <p><b>Team Name:</b> {team.name}</p>
+                                </div>
                             </Link>
                         )
                         })

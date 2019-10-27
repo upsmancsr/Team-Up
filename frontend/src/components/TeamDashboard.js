@@ -25,7 +25,6 @@ class TeamDashboard extends Component {
   }
 
   render() {
-    console.log('TeamDash state on render:', this.state);
     const { team } = this.state;
     return (
         team &&
