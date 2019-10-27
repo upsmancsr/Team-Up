@@ -25,7 +25,6 @@ class TeamDashboard extends Component {
   }
 
   render() {
-    console.log('TeamDash state on render:', this.state);
     const { team } = this.state;
     return (
         team &&
@@ -39,6 +38,7 @@ class TeamDashboard extends Component {
                     return (
                     <div className={styles.row} key={index}>
                         <p>{user.firstName} {user.lastName}</p>
+                        <p>{user.email}</p>
                     </div>
                     )
                 })

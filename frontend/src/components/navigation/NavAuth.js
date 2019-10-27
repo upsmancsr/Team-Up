@@ -20,7 +20,6 @@ const NavAuth = () => (
         <span>
             {styledNavLink('/', 'Home', 'exact')}
             {styledNavLink('/myteams', 'My Teams')}
-            {styledNavLink('/TeamDashboard/:teamId', 'My Teams')}
             <SignOut />
         </span>
     </div>
