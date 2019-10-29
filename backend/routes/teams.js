@@ -35,6 +35,17 @@ router.get('/singleteam/:teamId', async (req, res) => {
         console.log(error);
         res.status(500).json(error);
     }
-})
+});
+
+router.post('/invite', async (req, res) => {
+    try {
+        const { teamId, email } = req.body;
+        const updatedTeam = await Team.findOneAndUpdate({ _id: teamId }, { $push: { invitedUsers: email }}, { useFindAndModify: false });
+        res.status(200).json(updatedTeam);
+    }
+    catch(error) {
+        res.status(500).json(error);
+    }
+});
 
 module.exports = router;
