@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import InviteDialog from './InviteDialog';
 import axios from 'axios';
 
 import styles from '../scss/components/TeamDashboard.module.scss';
@@ -30,20 +31,25 @@ class TeamDashboard extends Component {
         team &&
         <div className={styles.TeamDashboard}>
             <p><b>Team Name:</b> {team.name}</p>
+
             <div className={styles.teamMembersContainer}>
-            <p>Team members:</p>
-            <div className={styles.teamMembersList}>
-                {team &&
-                team.users.map((user, index) => {
-                    return (
-                    <div className={styles.row} key={index}>
-                        <p>{user.firstName} {user.lastName}</p>
-                        <p>{user.email}</p>
-                    </div>
-                    )
-                })
-                }
+                <p>Team members:</p>
+                <div className={styles.teamMembersList}>
+                    {team &&
+                    team.users.map((user, index) => {
+                        return (
+                        <div className={styles.row} key={index}>
+                            <p>{user.firstName} {user.lastName}</p>
+                            <p>{user.email}</p>
+                        </div>
+                        )
+                    })
+                    }
+                </div>
             </div>
+
+            <div className={styles.teamActionsContainer}>
+                <InviteDialog teamId={team._id} />
             </div>
         </div>
     );

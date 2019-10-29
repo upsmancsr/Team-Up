@@ -19,6 +19,21 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.get('/invitations', async (req, res) => {
+    try {
+        const { uid } = req.body;
+        const user = await User.findOne({ uid });
+        // console.log('user:', user);
+        const teams = await Team.find({ invitedUsers: user.email });
+        // console.log('teams:', teams);
+        res.status(200).json(teams);
+    }
+    catch(error) {
+        console.log(error);
+        res.status(500).json(error);
+    }
+});
+
 router.get('/singleteam/:teamId', async (req, res) => {
     try {
         const { uid } = req.body;
@@ -35,6 +50,33 @@ router.get('/singleteam/:teamId', async (req, res) => {
         console.log(error);
         res.status(500).json(error);
     }
-})
+});
+
+router.post('/invite', async (req, res) => {
+    try {
+        const { teamId, email } = req.body;
+        const updatedTeam = await Team.findOneAndUpdate({ _id: teamId }, { $push: { invitedUsers: email }}, { useFindAndModify: false });
+        res.status(200).json(updatedTeam);
+    }
+    catch(error) {
+        res.status(500).json(error);
+    }
+});
+
+router.post('/join', async (req, res) => {
+    try {
+        const { uid, teamId } = req.body;
+        // Retrieve the User:
+        const user = await User.findOne({ uid });
+        // Remove user's email from invitedUsers array:
+        await Team.findOneAndUpdate({ _id: teamId }, { $pull: { invitedUsers: user.email }}, { useFindAndModify: false });
+        // Add user's _id to users array:
+        const updatedTeam = await Team.findOneAndUpdate({ _id: teamId }, { $push: { users: user._id }}, { useFindAndModify: false });
+        res.status(200).json(updatedTeam);
+    }
+    catch(error) {
+        res.status(500).json(error);
+    }
+});
 
 module.exports = router;
