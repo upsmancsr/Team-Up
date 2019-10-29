@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import NewTeamDialog from './NewTeamDialog';
 import axios from 'axios';
 
 import styles from '../scss/components/MyTeams.module.scss';
@@ -52,6 +53,9 @@ class MyTeams extends Component {
                         Team Invitations
                     </button>
                 </Link>
+            </div>
+            <div>
+                <NewTeamDialog />
             </div>
         </div>
     );

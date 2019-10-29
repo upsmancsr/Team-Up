@@ -48,8 +48,6 @@ router.post('/signup', async (req, res) => {
             // Create a default starting Team for the user:
             const newTeam = new Team({
                 name: `${firstName} ${lastName}'s Team 1`
-                // users: [user._id]
-                // adminUsers: [user._id]
             });
 
             // Push user._id into newTeam users and adminUsers array fields:
@@ -60,35 +58,6 @@ router.post('/signup', async (req, res) => {
             console.log('team response from MongoDB:', team);
 
             res.status(200).json({ user, team });
-            
-            // newUser
-            //     .save()
-            //     .then(user => {
-            //         console.log('user response from MongoDB:', user);
-            //         // Create a default starting Team for the user:
-            //         const newTeam = new Team({
-            //             name: `${firstName} ${lastName}'s Team 1`
-            //             // users: [user._id]
-            //             // adminUsers: [user._id]
-            //         });
-            //         // Push user._id into newTeam users and adminUsers array fields:
-            //         newTeam.users.push(user._id);
-            //         newTeam.adminUsers.push(user._id);
-            //         newTeam
-            //             .save()
-            //             .then(team => {
-            //                 console.log('team response from MongoDB:', team);
-            //                 res.status(200).json({ user, team });
-            //             })
-            //             .catch(error => {
-            //                 console.log(error);
-            //                 res.status(500).json(error);
-            //             });
-            //     })
-            //     .catch(error => {
-            //         console.log(error);
-            //         res.status(500).json(error);
-            //     });    
         }
     }
     catch(error) {

@@ -59,6 +59,7 @@ router.post('/invite', async (req, res) => {
         res.status(200).json(updatedTeam);
     }
     catch(error) {
+        console.log(error);
         res.status(500).json(error);
     }
 });
@@ -75,6 +76,32 @@ router.post('/join', async (req, res) => {
         res.status(200).json(updatedTeam);
     }
     catch(error) {
+        console.log(error);
+        res.status(500).json(error);
+    }
+});
+
+router.post('/newteam', async (req, res) => {
+    try {
+        const { uid, teamName } = req.body;
+
+        const user = await User.findOne({ uid });
+
+        const newTeam = new Team({
+            name: teamName
+        });
+
+        // Push user._id into newTeam users and adminUsers array fields:
+        newTeam.users.push(user._id);
+        newTeam.adminUsers.push(user._id);
+        // save new team in db:
+        const team = await newTeam.save();
+
+        console.log('team response from MongoDB:', team);
+        res.status(200).json({ team });
+    }
+    catch(error) {
+        console.log(error);
         res.status(500).json(error);
     }
 });
