@@ -22,7 +22,20 @@ class MyInvitations extends Component {
         console.log(error);
         this.setState({ error: error });
       });
-  }
+  };
+
+  joinTeam = event => {
+    const teamId = event.target.id;
+    const joinData = { teamId };
+    axios.post('api/teams/join', joinData)
+        .then(response => {
+            this.props.history.push(`/TeamDashboard/${teamId}`);
+        })
+        .catch(error => {
+            console.log(error);
+            this.setState({ error: error });
+        });
+  };
 
   render() {
     const { teams } = this.state;
@@ -35,11 +48,15 @@ class MyInvitations extends Component {
                     {teams.length > 0 &&
                         teams.map((team, index) => {
                         return (
-                            <Link to={`/TeamDashboard/${team._id}`} key={index}>
-                                <div className={styles.row}>
-                                    <p><b>Team Name:</b> {team.name}</p>
-                                </div>
-                            </Link>
+                            <div className={styles.row}>
+                                <p><b>Team Name:</b> {team.name}</p>
+                                <button 
+                                    id={team._id}
+                                    onClick={this.joinTeam}
+                                >
+                                    Join
+                                </button>
+                            </div>
                         )
                         })
                     }
