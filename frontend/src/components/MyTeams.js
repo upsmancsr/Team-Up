@@ -48,7 +48,9 @@ class MyTeams extends Component {
             </div>
             <div>
                 <Link to={'/myinvitations'}>
-                    Team Invitations
+                    <button>
+                        Team Invitations
+                    </button>
                 </Link>
             </div>
         </div>
