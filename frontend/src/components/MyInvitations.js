@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import styles from '../scss/components/MyTeams.module.scss';
 
-class MyTeams extends Component {
+class MyInvitations extends Component {
   constructor() {
     super();
     this.state = {
@@ -14,14 +14,14 @@ class MyTeams extends Component {
   } 
 
   componentDidMount() {
-    axios.get('/api/teams')
+    axios.get('/api/teams/invitations')
       .then(response => {
         this.setState({ teams: response.data });
       })
       .catch(error => {
         console.log(error);
         this.setState({ error: error });
-      })
+      });
   }
 
   render() {
@@ -29,7 +29,7 @@ class MyTeams extends Component {
     return (
         <div className={styles.MyTeams}>
             <div className={styles.teamsListContainer}>
-                <h3>Your teams</h3>
+                <h3>Your team invitations</h3>
                 {teams.length && 
                 <div className={styles.teamsList}>
                     {teams.length > 0 &&
@@ -46,14 +46,9 @@ class MyTeams extends Component {
                 </div>
                 }
             </div>
-            <div>
-                <Link to={'/myinvitations'}>
-                    Team Invitations
-                </Link>
-            </div>
         </div>
     );
   }
 };
 
-export default MyTeams;
+export default MyInvitations;

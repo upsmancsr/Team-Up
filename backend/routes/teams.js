@@ -19,6 +19,21 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.get('/invitations', async (req, res) => {
+    try {
+        const { uid } = req.body;
+        const user = await User.findOne({ uid });
+        // console.log('user:', user);
+        const teams = await Team.find({ invitedUsers: user.email });
+        // console.log('teams:', teams);
+        res.status(200).json(teams);
+    }
+    catch(error) {
+        console.log(error);
+        res.status(500).json(error);
+    }
+})
+
 router.get('/singleteam/:teamId', async (req, res) => {
     try {
         const { uid } = req.body;
