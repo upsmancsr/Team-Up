@@ -46,7 +46,7 @@ class SignUpComponent extends Component {
                             .then(signUpResponse => {
                                 console.log('response from POST to /register', signUpResponse);
                                 this.props.history.push({         
-                                    pathname: "/useraccount"
+                                    pathname: "/myteams"
                                 });
                             })
                             .catch(error => {

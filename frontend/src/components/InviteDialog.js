@@ -11,7 +11,7 @@ import axios from 'axios';
 
 function InviteDialog(props) {
     const [open, setOpen] = useState(false);
-    const [email, setEmail] = useState('');
+    const [emailInput, setEmailInput] = useState('');
     const [error, setError] = useState(null);
 
     const handleClickOpen = () => {
@@ -22,23 +22,19 @@ function InviteDialog(props) {
         setOpen(false);
     };
 
-    const onChange = event => {
-        this.setState({ [event.target.name]: event.target.value });
-    };
-
-    const inputSetter = set => event => {
+    const setInput = set => event => {
         set(event.target.value);
     };
 
     const handleConfirm = event => {
         const inviteData = {
-            teamId: this.props.teamId,
-            email
+            teamId: props.teamId,
+            emailInput
         }
 
         axios.post('api/teams/invite', inviteData)
             .then(response => {
-                setEmail('');
+                setEmailInput('');
                 setOpen(false);
             })
             .catch(error => {
@@ -71,13 +67,13 @@ function InviteDialog(props) {
                   <TextField
                     autoFocus
                     margin="dense"
-                    id="email"
-                    name="email"
-                    label="email"
+                    id="emailInput"
+                    name="emailInput"
+                    label="email input"
                     type="text"
                     required={true}
-                    value={email}
-                    onChange={onChange}
+                    value={emailInput}
+                    onChange={setInput(setEmailInput)}
                     fullWidth
                   />
                 </DialogContent>
