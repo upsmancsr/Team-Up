@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -9,64 +9,51 @@ import TextField from '@material-ui/core/TextField';
 
 import axios from 'axios';
 
-class InviteDialog extends Component {
-  state = {
-    open: false,
-    teamId: null,
-    email: '',
-    error: null
-  };
+function InviteDialog(props) {
+    const [open, setOpen] = useState(false);
+    const [emailInput, setEmailInput] = useState('');
+    const [error, setError] = useState(null);
 
-  handleClickOpen = () => {
-    const teamId = this.props.teamId;
-    this.setState({ 
-        open: true,
-        teamId,
-    }, () => console.log(this.state));
-  };
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
 
-  handleClose = () => {
-    this.setState({ open: false });
-  };
+    const handleClose = () => {
+        setOpen(false);
+    };
 
-  onChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
-  };
+    const setInput = set => event => {
+        set(event.target.value);
+    };
 
-  handleConfirm = event => {
-    const { teamId, email } = this.state;
-    const inviteData = {
-        teamId,
-        email
-    }
+    const handleConfirm = event => {
+        const inviteData = {
+            teamId: props.teamId,
+            email: emailInput
+        }
 
-    axios.post('api/teams/invite', inviteData)
-        .then(response => {
-            this.setState({ 
-                email: '', open: false,
-                error: null
+        axios.post('api/teams/invite', inviteData)
+            .then(response => {
+                setEmailInput('');
+                setOpen(false);
+            })
+            .catch(error => {
+                console.log(error);
+                setError(error);
             });
-        })
-        .catch(error => {
-            console.log(error);
-            this.setState({ error: error });
-        });
 
-
-    event.preventDefault();
-  };
-
-  render() {
+        event.preventDefault();
+    };
     
     return (
         <div>
-          <Button variant="outlined" color="primary" onClick={this.handleClickOpen}>
+          <Button variant="outlined" color="primary" onClick={handleClickOpen}>
                 Invite members
           </Button>
           
           <Dialog
-            open={this.state.open}
-            onClose={this.handleClose}
+            open={open}
+            onClose={handleClose}
             aria-labelledby="form-dialog-title"
           >
             
@@ -80,32 +67,31 @@ class InviteDialog extends Component {
                   <TextField
                     autoFocus
                     margin="dense"
-                    id="email"
-                    name="email"
-                    label="email"
+                    id="emailInput"
+                    name="emailInput"
+                    label="email input"
                     type="text"
                     required={true}
-                    value={this.state.email}
-                    onChange={this.onChange}
+                    value={emailInput}
+                    onChange={setInput(setEmailInput)}
                     fullWidth
                   />
                 </DialogContent>
 
                 <DialogActions>
-                    <Button onClick={this.handleClose} color="primary">
+                    <Button onClick={handleClose} color="primary">
                         Cancel
                     </Button>
-                    <Button onClick={this.handleConfirm} color="primary">
+                    <Button onClick={handleConfirm} color="primary">
                         Confirm
                     </Button>
                 </DialogActions>
               </div>
             
           </Dialog>
-          {this.state.error && <p>Error inviting user</p>}
+          {error && <p>Error inviting user</p>}
         </div>
     );
-  }
 }
 
 export default InviteDialog;
