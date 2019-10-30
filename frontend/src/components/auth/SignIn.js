@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withFirebase } from '../contexts/firebase';
-// import { signInUser } from '../../authUtilities';
+import { connect } from 'react-redux';
 
 import axios from 'axios';
 
 // import jwt_decode from "jwt-decode";
-import { toggleAuthHeader } from '../../authUtilities';
+// import { signInUser } from '../../authUtilities';
+// import { toggleAuthHeader } from '../../authUtilities';
 
 class SignInComponent extends Component {
     constructor() {
