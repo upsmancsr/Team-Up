@@ -139,7 +139,18 @@ class SignUpComponent extends Component {
                                     Sign up
                                 </button>
                             </div>
-                            <a href="/auth/google" class="button">
+                        </form>
+                    </div>
+                </div>
+            </div>
+    );
+  }
+}
+
+const SignUp = withFirebase(SignUpComponent);
+export default SignUp;
+
+{/* <a href="/auth/google" class="button">
           <div>
             <span class="svgIcon t-popup-svg">
               <svg
@@ -170,14 +181,4 @@ class SignUpComponent extends Component {
        </span>
      <span class="button-label">Sign in with Google</span>
    </div>
-</a>
-                        </form>
-                    </div>
-                </div>
-            </div>
-    );
-  }
-}
-
-const SignUp = withFirebase(SignUpComponent);
-export default SignUp;
+</a> */}
