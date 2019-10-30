@@ -29,7 +29,7 @@ function InviteDialog(props) {
     const handleConfirm = event => {
         const inviteData = {
             teamId: props.teamId,
-            emailInput
+            email: emailInput
         }
 
         axios.post('api/teams/invite', inviteData)
