@@ -29,34 +29,41 @@ class MyTeams extends Component {
     const { teams } = this.state;
     return (
         <div className={styles.MyTeams}>
-            <div className={styles.teamsListContainer}>
-                <h3>Your teams</h3>
-                {teams.length && 
-                <div className={styles.teamsList}>
-                    {teams.length > 0 &&
-                        teams.map((team, index) => {
-                        return (
-                            <Link to={`/TeamDashboard/${team._id}`} key={index}>
+
+            <div className={styles.leftContainer}>
+                <div className={styles.teamsListContainer}>
+                    <h3>Current teams</h3>
+                    {teams.length && 
+                    <div className={styles.teamsList}>
+                        {teams.length > 0 &&
+                            teams.map((team, index) => {
+                            return (
+                                <Link to={`/TeamDashboard/${team._id}`} key={index}>
                                 <div className={styles.row}>
                                     <p><b>Team Name:</b> {team.name}</p>
                                 </div>
-                            </Link>
-                        )
-                        })
+                                </Link>
+                            )
+                            })
+                        }
+                    </div>
                     }
                 </div>
-                }
             </div>
-            <div>
-                <Link to={'/myinvitations'}>
+
+            <div className={styles.rightContainer}>
+                <div className={styles.teamActionItem}>
+                    <NewTeamDialog />
+                </div>
+                <div className={styles.teamActionItem}>
+                    <Link to={'/myinvitations'}>
                     <button>
                         Team Invitations
                     </button>
-                </Link>
+                    </Link>
+                </div>
             </div>
-            <div>
-                <NewTeamDialog />
-            </div>
+
         </div>
     );
   }
