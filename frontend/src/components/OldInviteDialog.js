@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -9,55 +9,64 @@ import TextField from '@material-ui/core/TextField';
 
 import axios from 'axios';
 
-function InviteDialog(props) {
-    const [open, setOpen] = useState(false);
-    const [email, setEmail] = useState('');
-    const [error, setError] = useState(null);
+class InviteDialog extends Component {
+  state = {
+    open: false,
+    teamId: null,
+    email: '',
+    error: null
+  };
 
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
+  handleClickOpen = () => {
+    const teamId = this.props.teamId;
+    this.setState({ 
+        open: true,
+        teamId,
+    }, () => console.log(this.state));
+  };
 
-    const handleClose = () => {
-        setOpen(false);
-    };
+  handleClose = () => {
+    this.setState({ open: false });
+  };
 
-    const onChange = event => {
-        this.setState({ [event.target.name]: event.target.value });
-    };
+  onChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
 
-    const inputSetter = set => event => {
-        set(event.target.value);
-    };
+  handleConfirm = event => {
+    const { teamId, email } = this.state;
+    const inviteData = {
+        teamId,
+        email
+    }
 
-    const handleConfirm = event => {
-        const inviteData = {
-            teamId: this.props.teamId,
-            email
-        }
-
-        axios.post('api/teams/invite', inviteData)
-            .then(response => {
-                setEmail('');
-                setOpen(false);
-            })
-            .catch(error => {
-                console.log(error);
-                setError(error);
+    axios.post('api/teams/invite', inviteData)
+        .then(response => {
+            this.setState({ 
+                email: '', open: false,
+                error: null
             });
+        })
+        .catch(error => {
+            console.log(error);
+            this.setState({ error: error });
+        });
 
-        event.preventDefault();
-    };
+
+    event.preventDefault();
+  };
+
+  render() {
     
     return (
         <div>
-          <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+          <Button variant="outlined" color="primary" onClick={this.handleClickOpen}>
                 Invite members
           </Button>
           
           <Dialog
-            open={open}
-            onClose={handleClose}
+            open={this.state.open}
+            onClose={this.handleClose}
             aria-labelledby="form-dialog-title"
           >
             
@@ -76,26 +85,27 @@ function InviteDialog(props) {
                     label="email"
                     type="text"
                     required={true}
-                    value={email}
-                    onChange={onChange}
+                    value={this.state.email}
+                    onChange={this.onChange}
                     fullWidth
                   />
                 </DialogContent>
 
                 <DialogActions>
-                    <Button onClick={handleClose} color="primary">
+                    <Button onClick={this.handleClose} color="primary">
                         Cancel
                     </Button>
-                    <Button onClick={handleConfirm} color="primary">
+                    <Button onClick={this.handleConfirm} color="primary">
                         Confirm
                     </Button>
                 </DialogActions>
               </div>
             
           </Dialog>
-          {error && <p>Error inviting user</p>}
+          {this.state.error && <p>Error inviting user</p>}
         </div>
     );
+  }
 }
 
 export default InviteDialog;

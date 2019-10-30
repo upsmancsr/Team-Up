@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { signUpUser } from '../../authUtilities';
+// import { signUpUser } from '../../authUtilities';
 import { withFirebase } from '../contexts/firebase';
 import axios from 'axios';
 
@@ -10,7 +10,8 @@ class SignUpComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: '',
+            firstName: '',
+            lastName: '',
             email: '',
             password: '',
             password2: '',
@@ -139,11 +140,22 @@ class SignUpComponent extends Component {
                                     Sign up
                                 </button>
                             </div>
-                            <a href="/auth/google" class="button">
+                        </form>
+                    </div>
+                </div>
+            </div>
+    );
+  }
+}
+
+const SignUp = withFirebase(SignUpComponent);
+export default SignUp;
+
+{/* <a href="/auth/google" className="button">
           <div>
-            <span class="svgIcon t-popup-svg">
+            <span className="svgIcon t-popup-svg">
               <svg
-                class="svgIcon-use"
+                className="svgIcon-use"
                 width="25"
                 height="37"
                 viewBox="0 0 25 25"
@@ -168,16 +180,6 @@ class SignUpComponent extends Component {
                 </g>
               </svg>
        </span>
-     <span class="button-label">Sign in with Google</span>
+     <span className="button-label">Sign in with Google</span>
    </div>
-</a>
-                        </form>
-                    </div>
-                </div>
-            </div>
-    );
-  }
-}
-
-const SignUp = withFirebase(SignUpComponent);
-export default SignUp;
+</a> */}

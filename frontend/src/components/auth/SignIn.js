@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-
-import { signInUser } from '../../authUtilities';
+import { withFirebase } from '../contexts/firebase';
+// import { signInUser } from '../../authUtilities';
 
 import axios from 'axios';
 
 // import jwt_decode from "jwt-decode";
 import { toggleAuthHeader } from '../../authUtilities';
 
-class SignIn extends Component {
+class SignInComponent extends Component {
     constructor() {
         super();
         this.state = {
@@ -33,7 +33,7 @@ class SignIn extends Component {
                     .then(idToken => {
                         console.log("idToken from firebase logIn: ", idToken);
                         axios.defaults.headers.common['Authorization'] = idToken;   
-                        this.props.history.push('/useraccount');
+                        this.props.history.push('/myteams');
                     })  
                     .catch(error => {                 // if Firebase getIdToken throws an error
                         this.setState({ 
@@ -100,4 +100,6 @@ class SignIn extends Component {
         );
     }
 }
+
+const SignIn = withFirebase(SignInComponent);
 export default SignIn;
