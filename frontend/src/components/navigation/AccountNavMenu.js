@@ -22,7 +22,18 @@ const AccountNavMenu = props => {
             </button>
             {open && 
                 <div className={styles.dropdownContainer}>
-                    <p>Open</p>
+                    <div className={styles.topRow}>
+                        <div className={styles.row}>
+                            <p className={styles.mainText}>Signed in as</p>
+                            <p className={styles.subText}>{props.user.firstName} {props.user.lastName}</p>
+                            <p className={styles.subText}>{props.user.email}</p>
+                        </div>
+                    </div>
+                    {/* <div className={styles.row}>
+                        <p className={styles.mainText}>Signed in as</p>
+                        <p className={styles.subText}>{props.user.firstName} {props.user.lastName}</p>
+                        <p className={styles.subText}>{props.user.email}</p>
+                    </div> */}
                 </div>
             }
         </div>
