@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { connect } from 'react-redux';
 import SignOut from '../auth/SignOut';
+import AccountMenu from './AccountMenu';
 
 const styledNavLink = (route, name) => {
     return (
@@ -21,17 +21,10 @@ const NavAuth = (props) => (
         <span>
             {styledNavLink('/', 'Home', 'exact')}
             {styledNavLink('/myteams', 'My Teams')}
-            {props.user.firstName}
+            <AccountMenu />
             <SignOut />
         </span>
     </div>
 );
 
-const mapStateToProps = state => ({
-    user: state.user
-});
-
-export default connect(
-    mapStateToProps,
-    null
-)(NavAuth);
+export default NavAuth;
