@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 
 // Import req validation functions:
-const validateSignUpInput = require('../reqValidation/validateSignUp');
-const validateSignInInput = require('../reqValidation/validateSignIn');
+// const validateSignUpInput = require('../reqValidation/validateSignUp');
+// const validateSignInInput = require('../reqValidation/validateSignIn');
 
 // Import MongoDB models:
 const User = require('../schemas/User');
@@ -97,6 +97,18 @@ router.get('/allusers', async (req, res) => {
     try {
         const users = await User.find({}).select('firstName lastName email');
         res.status(200).json(users);
+    }
+    catch(error) {
+        res.status(500).json(error);
+    }
+});
+
+// GET endpoint to get the current user:
+router.get('/currentuser', async (req, res) => {
+    try {
+        const { uid } = req.body;
+        const user = await User.findOne({ uid });
+        res.status(200).json(user);
     }
     catch(error) {
         res.status(500).json(error);
