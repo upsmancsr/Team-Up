@@ -32,7 +32,7 @@ const AccountNavMenu = props => {
             <button className={styles.menuBtn}
                 onClick={handleToggleOpen}
             >
-                Menu
+                Account
             </button>
             {open && 
                 <div className={styles.dropdownContainer} ref={dropdownRef}>
