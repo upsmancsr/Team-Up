@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link, withRouter } from "react-router-dom";
 import { withFirebase } from '../contexts/firebase';
 
+import styles from '../../scss/components/SignOut.module.scss';
+
 class SignOutBase extends Component {
 
     logOut = event => {
@@ -10,8 +12,8 @@ class SignOutBase extends Component {
 
     render() {
         return (
-            <Link to="/" className="log-out-link" onClick={this.logOut}>
-                Sign Out
+            <Link to="/" className={styles.SignOutLink} onClick={this.logOut}>
+                Sign out
             </Link>
         );
     }

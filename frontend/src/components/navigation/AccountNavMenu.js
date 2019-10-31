@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+import SignOut from '../auth/SignOut';
 import styles from '../../scss/components/AccountNavMenu.module.scss';
 
 const AccountNavMenu = props => {
@@ -26,8 +28,8 @@ const AccountNavMenu = props => {
     });
 
     return (
-        <div>
-            <button
+        <div className={styles.AccountNavMenu}>
+            <button className={styles.menuBtn}
                 onClick={handleToggleOpen}
             >
                 Menu
@@ -41,6 +43,23 @@ const AccountNavMenu = props => {
                             <p className={styles.subText}>{props.user.email}</p>
                         </div>
                     </div>
+
+                    <div className={styles.row}>
+                        <NavLink 
+                            to='/myteams'
+                            className={styles.mainText}
+                            activeStyle={{ color: 'blue' }}
+                            exact
+                            onClick={handleToggleOpen}
+                        >
+                            Your teams
+                        </NavLink>
+                    </div>
+
+                    <div className={styles.row}>
+                        <SignOut />
+                    </div>
+                    
                 </div>
             }
         </div>
