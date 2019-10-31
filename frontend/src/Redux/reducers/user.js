@@ -55,9 +55,11 @@ export default (state = initialState, action) => {
     }
 };
 
-export const authAccount = form => async dispatch => {
-    const accountInfo = await axios.post('/auth', form);
-    if (accountInfo) {
-        dispatch({ type: SET_USER_INFO, payload: accountInfo.data });
-    }
+export const setUserInfo = idToken => async dispatch => {
+    const userInfo = await axios.get('/users/currentuser');
+    console.log(userInfo.data);
+    dispatch({ 
+        type: SET_USER_INFO, 
+        payload: userInfo.data 
+    });
 };

@@ -8,29 +8,13 @@ import NavBar from './components/navigation/NavBar';
 import LandingPage from './components/LandingPage';
 import SignUp from './components/auth/SignUp';
 import SignIn from './components/auth/SignIn';
-// import UserAccount from './components/UserAccount';
 import MyTeams from './components/MyTeams';
 import MyInvitations from './components/MyInvitations';
 import TeamDashboard from './components/TeamDashboard';
-import { toggleAuthHeader, signOutUser } from './authUtilities';
-import jwt_decode from "jwt-decode";
 import './App.css';
 
-const token = localStorage.jwtToken;
-    if (token) {
-      // Assign token to axios auth header:
-      toggleAuthHeader(token);
-      // Decode token and get user info and exp
-      const decoded = jwt_decode(token);
-      // Check for expired token
-      const currentTime = Date.now() / 1000; // current time in milliseconds
-      if (decoded.exp < currentTime) {
-        // Sign out the user:
-        signOutUser();
-        // Redirect to the Sign In page:
-        window.location.href = './signin';
-      }
-    }
+import { connect } from 'react-redux';
+import { setUserInfo } from './Redux/reducers/user.js';
 
 class AppComponent extends Component {
   constructor(props) {
@@ -50,6 +34,7 @@ class AppComponent extends Component {
         this.props.firebase.auth.currentUser.getIdToken()
           .then(idToken => {
             axios.defaults.headers.common['Authorization'] = idToken;
+            this.props.setUserInfo(idToken);    // * call setUserInfo from Redux user reducer
             this.setState({
               authenticated: true,
               authUser,
@@ -97,4 +82,11 @@ class AppComponent extends Component {
 
 const App = withFirebase(AppComponent);
 
-export default App;
+const mapStateToProps = state => ({
+  user: state.user
+});
+
+export default connect(
+  mapStateToProps,
+  { setUserInfo }
+)(App);
