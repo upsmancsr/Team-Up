@@ -1,6 +1,5 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import SignOut from '../auth/SignOut';
 import AccountNavMenu from './AccountNavMenu';
 
 import styles from '../../scss/components/NavAuth.module.scss';
@@ -24,7 +23,6 @@ const NavAuth = (props) => (
             {styledNavLink('/', 'Home', 'exact')}
             {styledNavLink('/myteams', 'My Teams')}
             <AccountNavMenu />
-            <SignOut />
         {/* </div> */}
     </div>
 );
