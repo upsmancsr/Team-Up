@@ -19,11 +19,8 @@ const styledNavLink = (route, name) => {
 
 const NavAuth = (props) => (
     <div className={styles.NavAuth}>
-        {/* <div> */}
-            {styledNavLink('/', 'Home', 'exact')}
-            {styledNavLink('/myteams', 'My Teams')}
-            <AccountNavMenu />
-        {/* </div> */}
+        {styledNavLink('/myteams', 'My Teams')}
+        <AccountNavMenu />
     </div>
 );
 
