@@ -1,7 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import SignOut from '../auth/SignOut';
-import AccountMenu from './AccountMenu';
+import AccountNavMenu from './AccountNavMenu';
+
+import styles from '../../scss/components/NavAuth.module.scss';
 
 const styledNavLink = (route, name) => {
     return (
@@ -17,13 +19,13 @@ const styledNavLink = (route, name) => {
 };
 
 const NavAuth = (props) => (
-    <div className='nav-auth-container'>
-        <span>
+    <div className={styles.NavAuth}>
+        {/* <div> */}
             {styledNavLink('/', 'Home', 'exact')}
             {styledNavLink('/myteams', 'My Teams')}
-            <AccountMenu />
+            <AccountNavMenu />
             <SignOut />
-        </span>
+        {/* </div> */}
     </div>
 );
 
