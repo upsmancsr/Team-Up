@@ -34,7 +34,7 @@ class AppComponent extends Component {
         this.props.firebase.auth.currentUser.getIdToken()
           .then(idToken => {
             axios.defaults.headers.common['Authorization'] = idToken;
-            this.props.setUserInfo(idToken);    // * call setUserInfo from Redux user reducer
+            // this.props.setUserInfo(idToken);    // * call setUserInfo from Redux user reducer
             this.setState({
               authenticated: true,
               authUser,
