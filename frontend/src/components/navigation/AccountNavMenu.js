@@ -28,8 +28,8 @@ const AccountNavMenu = props => {
     });
 
     return (
-        <div>
-            <button
+        <div className={styles.AccountNavMenu}>
+            <button className={styles.menuBtn}
                 onClick={handleToggleOpen}
             >
                 Menu
@@ -55,7 +55,7 @@ const AccountNavMenu = props => {
                             Your teams
                         </NavLink>
                     </div>
-                    
+
                     <div className={styles.row}>
                         <SignOut />
                     </div>
