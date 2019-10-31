@@ -1,5 +1,6 @@
 import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
 import SignOut from '../auth/SignOut';
 
 const styledNavLink = (route, name) => {
@@ -15,14 +16,22 @@ const styledNavLink = (route, name) => {
     )
 };
 
-const NavAuth = () => (
+const NavAuth = (props) => (
     <div className='nav-auth-container'>
         <span>
             {styledNavLink('/', 'Home', 'exact')}
             {styledNavLink('/myteams', 'My Teams')}
+            {props.user.firstName}
             <SignOut />
         </span>
     </div>
 );
 
-export default NavAuth;
+const mapStateToProps = state => ({
+    user: state.user
+});
+
+export default connect(
+    mapStateToProps,
+    null
+)(NavAuth);
