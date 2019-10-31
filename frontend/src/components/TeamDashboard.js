@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import InviteDialog from './InviteDialog';
+import { withRouter } from 'react-router-dom';
+import InviteDialog from './Dialogs/InviteDialog';
+import LeaveDialog from './Dialogs/LeaveDialog';
 import axios from 'axios';
-
+import { connect } from 'react-redux';
 import styles from '../scss/components/TeamDashboard.module.scss';
 
 class TeamDashboard extends Component {
@@ -50,10 +52,20 @@ class TeamDashboard extends Component {
 
             <div className={styles.teamActionsContainer}>
                 <InviteDialog teamId={team._id} />
+                {!team.adminUsers.includes(this.props.user.id) && 
+                    <LeaveDialog teamId={team._id} history={this.props.history} />
+                }
             </div>
         </div>
     );
   }
 };
 
-export default TeamDashboard;
+const mapStateToProps = state => ({
+    user: state.user
+});
+
+export default connect(
+    mapStateToProps,
+    null
+)(TeamDashboard);
