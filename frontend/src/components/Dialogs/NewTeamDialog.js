@@ -68,7 +68,7 @@ class NewTeamDialog extends Component {
 
                 <DialogContent>
                   <DialogContentText>
-                    Enter an email address to invite them to join
+                    Enter a team name
                   </DialogContentText>
                   <TextField
                     autoFocus

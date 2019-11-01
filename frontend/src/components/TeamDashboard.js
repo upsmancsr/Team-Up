@@ -32,8 +32,7 @@ class TeamDashboard extends Component {
     return (
         team &&
         <div className={styles.TeamDashboard}>
-            <p><b>Team Name:</b> {team.name}</p>
-
+            <p>Team Name: <b>{team.name}</b></p>
             <div className={styles.teamMembersContainer}>
                 <p>Team members:</p>
                 <div className={styles.teamMembersList}>
@@ -52,8 +51,11 @@ class TeamDashboard extends Component {
 
             <div className={styles.teamActionsContainer}>
                 <InviteDialog teamId={team._id} />
-                {!team.adminUsers.includes(this.props.user.id) && 
+                {!team.adminUsers.includes(this.props.user.id) ? (
                     <LeaveDialog teamId={team._id} history={this.props.history} />
+                ) : (
+                    <p>Admin area</p>
+                )
                 }
             </div>
         </div>

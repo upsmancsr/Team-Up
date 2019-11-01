@@ -8,7 +8,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
-function LeaveDialog(props) {
+function DeleteTeamDialog(props) {
     const [open, setOpen] = useState(false);
     const [error, setError] = useState(null);
 
@@ -38,8 +38,8 @@ function LeaveDialog(props) {
     
     return (
         <div>
-          <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-                Leave team
+          <Button variant="outlined" color="secondary" onClick={handleClickOpen}>
+                Delete team
           </Button>
           
           <Dialog
@@ -49,11 +49,11 @@ function LeaveDialog(props) {
           >
             
               <div>
-                <DialogTitle id="form-dialog-title">Leave team</DialogTitle>
+                <DialogTitle id="form-dialog-title">Delete team</DialogTitle>
 
                 <DialogContent>
                   <DialogContentText>
-                    Are you sure you want to leave this team?
+                    Are you sure you want to delete this team?
                   </DialogContentText>
                 </DialogContent>
 
@@ -80,4 +80,4 @@ const mapStateToProps = state => ({
 export default connect(
     mapStateToProps,
     null
-)(LeaveDialog);
+)(DeleteTeamDialog);
