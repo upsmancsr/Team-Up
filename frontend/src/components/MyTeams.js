@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import NewTeamDialog from './NewTeamDialog';
+import NewTeamDialog from './Dialogs/NewTeamDialog';
 import axios from 'axios';
 
 import styles from '../scss/components/MyTeams.module.scss';

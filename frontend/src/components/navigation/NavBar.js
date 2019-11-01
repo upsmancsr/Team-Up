@@ -8,6 +8,7 @@ import './css/NavBar.css';
 const NavBar = () => {
   return (
     <div className='nav-bar-container'>
+      <h1>TeamUp</h1>
       <AuthUserContext.Consumer>
         {authUser =>
           authUser ? <NavAuth /> : <NavNonAuth />
