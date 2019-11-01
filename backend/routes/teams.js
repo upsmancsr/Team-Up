@@ -128,6 +128,28 @@ router.post('/leave', async (req, res) => {
         // Remove user._id from users array:
         await Team.findOneAndUpdate({ _id: teamId }, { $pull: { users: user._id }}, { useFindAndModify: false });
         // Respond with the updated Team
+        res.status(200).json({ message: 'User left the team.'});
+    }
+    catch(error) {
+        console.log(error);
+        res.status(500).json(error);
+    }
+});
+
+// Endpoint for admin user to remove another user from a team:
+router.post('/removeuser', async (req, res) => {
+    try {
+        const { uid, nonAdminUserId, teamId } = req.body;
+        // Retrieve the Admin User:
+        const adminUser = await User.findOne({ uid });
+        // Retrieve the Team and check if user is admin:
+        const team = await Team.findOne({ _id: teamId});
+        if (!team.adminUsers.includes(adminUser._id)) {
+            res.status(401).json({ message: 'Only admin can remove another user'})
+        }
+        // Remove nonAdminUserId._id from users array:
+        await Team.findOneAndUpdate({ _id: teamId }, { $pull: { users: nonAdminUserId }}, { useFindAndModify: false });
+        // Respond with successful message:
         res.status(200).json({ message: 'User was removed from team.'});
     }
     catch(error) {
@@ -136,6 +158,7 @@ router.post('/leave', async (req, res) => {
     }
 });
 
+// Delete a team. Only Admin user on team can delete the team:
 router.post('/deleteteam', async (req, res) => {
     try {
         const { uid, teamId } = req.body;

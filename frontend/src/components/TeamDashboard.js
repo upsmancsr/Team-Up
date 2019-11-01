@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import InviteDialog from './Dialogs/InviteDialog';
 import LeaveDialog from './Dialogs/LeaveDialog';
 import DeleteTeamDialog from './Dialogs/DeleteTeamDialog';
+import RemoveUserDialog from './Dialogs/RemoveUserDialog';
 
 import axios from 'axios';
 import { connect } from 'react-redux';
@@ -41,10 +42,15 @@ class TeamDashboard extends Component {
                     {team &&
                     team.users.map((user, index) => {
                         return (
-                        <div className={styles.row} key={index}>
-                            <p>{user.firstName} {user.lastName}</p>
-                            <p>{user.email}</p>
-                        </div>
+                            <div className={styles.row} key={index}>
+                                <p>{user.firstName} {user.lastName}</p>
+                                <p>{user.email}</p>
+                                {(team.adminUsers.includes(this.props.user.id) && !team.adminUsers.includes(user._id)) ? (
+                                    <RemoveUserDialog teamId={team._id} nonAdminUserId={user._id} />
+                                ) : (
+                                    ''
+                                )}
+                            </div>
                         )
                     })
                     }
