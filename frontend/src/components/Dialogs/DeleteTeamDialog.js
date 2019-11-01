@@ -68,7 +68,7 @@ function DeleteTeamDialog(props) {
               </div>
             
           </Dialog>
-          {error && <p>Error leaving team</p>}
+          {error && <p>Error deleting team</p>}
         </div>
     );
 }

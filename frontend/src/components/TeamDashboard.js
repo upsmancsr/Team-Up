@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import InviteDialog from './Dialogs/InviteDialog';
 import LeaveDialog from './Dialogs/LeaveDialog';
+import DeleteTeamDialog from './Dialogs/DeleteTeamDialog';
+
 import axios from 'axios';
 import { connect } from 'react-redux';
 import styles from '../scss/components/TeamDashboard.module.scss';
@@ -54,7 +56,7 @@ class TeamDashboard extends Component {
                 {!team.adminUsers.includes(this.props.user.id) ? (
                     <LeaveDialog teamId={team._id} history={this.props.history} />
                 ) : (
-                    <p>Admin area</p>
+                    <DeleteTeamDialog teamId={team._id} history={this.props.history} />
                 )
                 }
             </div>
