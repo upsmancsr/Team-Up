@@ -13,11 +13,13 @@ const NoteSchema = new Schema({
   },
   author: {
     type: Schema.Types.ObjectId,
-    ref: 'User'
+    ref: 'User',
+    required: true
   },
   team: {
     type: Schema.Types.ObjectId, 
-    ref: 'Team'     /* ref is the collection in which the _id is found */
+    ref: 'Team',     /* ref is the collection in which the _id is found */
+    required: true
   },
   taggedUsers: [{
     type: Schema.Types.ObjectId, 
