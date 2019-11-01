@@ -136,4 +136,25 @@ router.post('/leave', async (req, res) => {
     }
 });
 
+router.post('/deleteteam', async (req, res) => {
+    try {
+        const { uid, teamId } = req.body;
+        // Retrieve the User:
+        const user = await User.findOne({ uid });
+        // Retrieve the Team and check if user is admin:
+        const team = await Team.findOne({ _id: teamId});
+        if (!team.adminUsers.includes(user._id)) {
+            res.status(401).json({ message: 'Admin access required to delete team.'})
+        }
+        // Remove user._id from users array:
+        await Team.deleteOne({ _id: teamId });
+        // Respond with the updated Team
+        res.status(200).json({ message: 'Team was deleted.'});
+    }
+    catch(error) {
+        console.log(error);
+        res.status(500).json(error);
+    }
+});
+
 module.exports = router;

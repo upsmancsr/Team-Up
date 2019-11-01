@@ -21,11 +21,11 @@ function DeleteTeamDialog(props) {
     };
 
     const handleConfirm = event => {
-        const leaveData = {
+        const deleteData = {
             teamId: props.teamId,
             userId: props.user.id
         }
-        axios.post('api/teams/leave', leaveData)
+        axios.post('api/teams/deleteteam', deleteData)
             .then(response => {
                 props.history.push('/myteams');
             })
