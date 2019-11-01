@@ -52,7 +52,7 @@ class TeamDashboard extends Component {
                                 )}
                             </div>
                         )
-                    })
+                    }) 
                     }
                 </div>
             </div>
