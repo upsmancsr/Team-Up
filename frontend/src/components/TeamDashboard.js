@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+// import { withRouter } from 'react-router-dom';
 import InviteDialog from './Dialogs/InviteDialog';
 import LeaveDialog from './Dialogs/LeaveDialog';
 import DeleteTeamDialog from './Dialogs/DeleteTeamDialog';
@@ -58,11 +58,17 @@ class TeamDashboard extends Component {
             </div>
 
             <div className={styles.teamActionsContainer}>
-                <InviteDialog teamId={team._id} />
+                <div className={styles.actionItem}>
+                    <InviteDialog teamId={team._id} />
+                </div>
                 {!team.adminUsers.includes(this.props.user.id) ? (
-                    <LeaveDialog teamId={team._id} history={this.props.history} />
+                    <div className={styles.actionItem}>
+                        <LeaveDialog teamId={team._id} history={this.props.history} />
+                    </div>
                 ) : (
-                    <DeleteTeamDialog teamId={team._id} history={this.props.history} />
+                    <div className={styles.actionItem}>
+                        <DeleteTeamDialog teamId={team._id} history={this.props.history} />
+                    </div>
                 )
                 }
             </div>

@@ -7,8 +7,19 @@
   display: flex;
   flex-direction: column; }
 
+a {
+  text-decoration: none;
+  color: black; }
+
 .teamMembersList .row {
   border: 1px solid grey;
   border-radius: 10px;
   padding: 0 12px 0 12px;
   margin-bottom: 10px; }
+
+.teamActionsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; }
+  .teamActionsContainer .actionItem {
+    margin: 5px 0 5px 0; }
