@@ -1,6 +1,14 @@
 .TeamDashboard {
   display: flex;
-  flex-direction: column; }
+  justify-content: flex-start; }
+
+.leftContainer {
+  padding: 10px;
+  width: 40%; }
+
+.rightContainer {
+  padding: 20px;
+  width: 60%; }
 
 .teamMembersContainer {
   width: 300px;
