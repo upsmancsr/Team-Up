@@ -5,10 +5,6 @@ import { connect } from 'react-redux';
 
 import axios from 'axios';
 
-// import jwt_decode from "jwt-decode";
-// import { signInUser } from '../../authUtilities';
-// import { toggleAuthHeader } from '../../authUtilities';
-
 class SignInComponent extends Component {
     constructor() {
         super();

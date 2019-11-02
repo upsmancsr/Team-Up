@@ -23,7 +23,7 @@ router.get('/:teamId', async (req, res) => {
 // Create a new note:
 router.post('/newnote', async (req, res) => {
     try {
-        const { userId: author, teamId: team, title, content } = req.body;
+        const { authorId: author, teamId: team, title, content } = req.body;
 
         const newNote = new Note({
             title,
