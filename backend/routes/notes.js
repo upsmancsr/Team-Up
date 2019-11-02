@@ -9,7 +9,7 @@ const Note = require('../schemas/Note');
 router.get('/:teamId', async (req, res) => {
     try {
         const { teamId } = req.params;
-        const notes = await Note.find({ team: teamId });
+        const notes = await Note.find({ team: teamId }).populate('author');
         // console.log('user:', user);
         // console.log('teams:', teams);
         res.status(200).json(notes);

@@ -17,7 +17,19 @@ function TeamNotes(props) {
 
     return (
         <div>
-            Team notes
+            {notes.length ? (
+                notes.map((note, index) => {
+                    return (
+                        <div key={index}>
+                            <p>{note.author.firstName} {note.author.lastName}</p>
+                            <p>{note.title}</p>
+                            <p>{note.content}</p>
+                        </div>
+                    )
+                })
+            ) : (
+                <p>No notes</p>
+            )}
         </div>
     );
 };
