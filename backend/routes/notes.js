@@ -35,8 +35,10 @@ router.post('/newnote', async (req, res) => {
         // save new note in db:
         const note = await newNote.save();
 
-        console.log('note response from MongoDB:', note);
-        res.status(200).json({ message: 'Note saved in database.', note });
+        // Get all notes for the team (to include new note):
+        const notes = await Note.find({ team }).populate('author');
+
+        res.status(200).json({ message: 'Note saved in database.', notes });
     }
     catch(error) {
         console.log(error);

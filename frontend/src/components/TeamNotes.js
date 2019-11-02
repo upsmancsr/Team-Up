@@ -36,6 +36,7 @@ function TeamNotes(props) {
             .then(response => {
                 setTitleInput('');
                 setContentInput('');
+                setNotes(response.data.notes);
             })
             .catch(error => {
                 console.log(error);
