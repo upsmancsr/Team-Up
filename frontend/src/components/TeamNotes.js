@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import styles from '../scss/components/TeamNotes.module.scss';
+
 function TeamNotes(props) {
     const [notes, setNotes] = useState([]);
 
@@ -16,11 +18,12 @@ function TeamNotes(props) {
     }, [props.teamId]);
 
     return (
-        <div>
+        <div className={styles.TeamNotes}>
+            <p>Notes:</p>
             {notes.length ? (
                 notes.map((note, index) => {
                     return (
-                        <div key={index}>
+                        <div className={styles.noteContainer} key={index}>
                             <p>{note.author.firstName} {note.author.lastName}</p>
                             <p>{note.title}</p>
                             <p>{note.content}</p>
