@@ -10,7 +10,7 @@ import axios from 'axios';
 // Set the base URL for axios requests:
 axios.defaults.baseURL = 
   process.env.NODE_ENV === 'production'
-    ? 'https://https://msights-auth2.herokuapp.com/'
+    ? 'https://msights-auth2.herokuapp.com/'
     : 'http://localhost:5000';
 
 
