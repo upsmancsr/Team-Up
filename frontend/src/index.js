@@ -7,8 +7,12 @@ import * as serviceWorker from './serviceWorker';
 import Firebase, { FirebaseContext } from './components/contexts/firebase';
 import axios from 'axios';
 
-// Set the base URL for axios requests to localhost:5000:
-axios.defaults.baseURL = 'http://localhost:5000';
+// Set the base URL for axios requests:
+axios.defaults.baseURL = 
+  process.env.NODE_ENV === 'production'
+    ? 'https://https://msights-auth2.herokuapp.com/'
+    : 'http://localhost:5000';
+
 
 ReactDOM.render(
   <Provider store={store}>
