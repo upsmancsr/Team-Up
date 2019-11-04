@@ -30,7 +30,6 @@ class AppComponent extends Component {
   componentDidMount() {
     this.listener = this.props.firebase.auth.onAuthStateChanged(authUser => {
       if (authUser) {
-        // console.log('onAuthStateChange authUser:' + authUser);
         this.props.firebase.auth.currentUser.getIdToken()
           .then(idToken => {
             axios.defaults.headers.common['Authorization'] = idToken;
