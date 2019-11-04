@@ -1,9 +1,13 @@
 {
 	"name": "MSights-Auth",
 	"version": "1.0.0",
+	"engines": {
+		"node": "12.9.1"
+	},
 	"description": "Take home assignment for Makersights Full Stack Engineer",
 	"main": "index.js",
 	"scripts": {
+		"start": "node index.js",
 		"dev": "nodemon ./index.js"
 	},
 	"repository": {
