@@ -7,6 +7,8 @@ import * as serviceWorker from './serviceWorker';
 import Firebase, { FirebaseContext } from './components/contexts/firebase';
 import axios from 'axios';
 
+import './index.css';
+
 // Set the base URL for axios requests:
 axios.defaults.baseURL = 
   process.env.NODE_ENV === 'production'
