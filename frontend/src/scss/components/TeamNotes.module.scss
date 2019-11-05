@@ -1,9 +1,22 @@
 .TeamNotes {
 	padding: 10px;
+	height: 100%;
 }
 
-.noteContainer {
+.newNoteForm {
+	height: 100px;
+}
+
+.notesList {
+	height: calc(65% - 20px);
+	overflow-y: scroll;
+	padding: 5px;
+	border: 1px solid lightgrey;
+}
+
+.noteCard {
 	border: 1px solid grey;
 	border-radius: 10px;
+	margin: 5px 0 5px 0;
 	padding: 0 10px 0 10px;
 }

@@ -64,6 +64,7 @@ class AppComponent extends Component {
       <div className='App'>
         <Router>
           <NavBar />
+          <div className='belowNavContainer'>
           <Switch>
             <Route path='/' exact component={LandingPage} />
             <Route exact path='/signup' component={SignUp} />
@@ -72,6 +73,7 @@ class AppComponent extends Component {
             <PrivateRoute path='/myinvitations' component={MyInvitations} authenticated={this.state.authenticated} />
             <PrivateRoute path='/TeamDashboard/:teamId' component={TeamDashboard} authenticated={this.state.authenticated} />
           </Switch>
+          </div>
         </Router>
       </div>
       </AuthUserContext.Provider>

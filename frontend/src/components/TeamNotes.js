@@ -47,23 +47,8 @@ function TeamNotes(props) {
 
     return (
         <div className={styles.TeamNotes}>
-            <p>Notes:</p>
-
-            {notes.length ? (
-                notes.map((note, index) => {
-                    return (
-                        <div className={styles.noteContainer} key={index}>
-                            <p>{note.author.firstName} {note.author.lastName}</p>
-                            <p>{note.title}</p>
-                            <p>{note.content}</p>
-                        </div>
-                    )
-                })
-            ) : (
-                <p>No notes</p>
-            )}
-
-            <form onSubmit={handleSubmit}>
+            <h4>Notes:</h4>
+            <form className={styles.newNoteForm} onSubmit={handleSubmit}>
                 <div>
                     <p>Post a new note:</p>
                     <label htmlFor="titleInput">Title</label>
@@ -95,6 +80,22 @@ function TeamNotes(props) {
                 </div>
             </form>
 
+            <div className={styles.notesList}>
+                {notes.length ? (
+                    notes.map((note, index) => {
+                        return (
+                            <div className={styles.noteCard} key={index}>
+                                <p>Posted by: <b>{note.author.firstName} {note.author.lastName}</b></p>
+                                <p>Title: <b>{note.title}</b></p>
+                                <p>{note.content}</p>
+                            </div>
+                        )
+                    })
+                    
+                ) : (
+                    <p>No notes</p>
+                )}
+            </div>
         </div>
     );
 };
