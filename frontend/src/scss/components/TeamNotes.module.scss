@@ -1,6 +1,9 @@
 .TeamNotes {
 	padding: 10px 3px 0 10px;
 	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
 }
 
 .newNoteForm {
@@ -9,13 +12,24 @@
 }
 
 .tagUserMenu {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
+	position: relative;
+
+	.tagMenuDropDown {
+		z-index: 100;
+		position: absolute;
+		top: 0;
+		left: 70px;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		border: 1px solid grey;
+		border-radius: 5px;
+		background-color: lightgrey;
+	}
 }
 
 .notesList {
-	height: calc(60% - 20px);
+	height: calc(60%);
 	overflow-y: scroll;
 	padding: 5px;
 	border: 1px solid lightgrey;

@@ -9,6 +9,7 @@ function TeamNotes(props) {
     const [titleInput, setTitleInput] = useState('');
     const [contentInput, setContentInput] = useState('');
     const [taggedUsers, setTaggedUsers] = useState([]);
+    const [tagMenuOpen, setTagMenuOpen] = useState(false)
 
     useEffect(() => {
         const users = props.team.users.map(user => {
@@ -34,6 +35,10 @@ function TeamNotes(props) {
         set(event.target.value);
     };
 
+    const handleToggleTagMenu = event => {
+        setTagMenuOpen(!tagMenuOpen);
+    };
+
     const handleToggleTagUser = event => {
         const users = taggedUsers.map(user => {
             return user = {
@@ -43,7 +48,7 @@ function TeamNotes(props) {
         });
         setTaggedUsers(users);
         // console.log(taggedUsers);
-    }
+    };
 
     const handleSubmit = event => {
         const taggedUserIds = taggedUsers.filter(user => user.tagged === true).map(user => user._id);
@@ -95,19 +100,26 @@ function TeamNotes(props) {
                     />
                 </div>
                 <div className={styles.tagUserMenu}>
-                    {taggedUsers.map((user, index) => {
-                        return (
-                            <label key={index}>
-                                <input
-                                    type="checkbox"
-                                    id={user._id}
-                                    checked={user.tagged}
-                                    onChange={handleToggleTagUser}
-                                />
-                                <b>{user.email}</b>{' ('}{user.firstName}{' '}{user.lastName}{')'}
-                            </label>
-                        )
-                    })}
+                    <button className={styles.tagUserMenuBtn} onClick={handleToggleTagMenu}>
+                        Tag users
+                    </button>
+                    {tagMenuOpen && 
+                        <div className={styles.tagMenuDropDown}>
+                            {taggedUsers.map((user, index) => {
+                                return (
+                                    <label key={index}>
+                                        <input
+                                            type="checkbox"
+                                            id={user._id}
+                                            checked={user.tagged}
+                                            onChange={handleToggleTagUser}
+                                        />
+                                        <b>{user.email}</b>{' ('}{user.firstName}{' '}{user.lastName}{')'}
+                                    </label>
+                                )
+                            })}
+                        </div>
+                    }
                 </div>
                 <div>
                     <button
