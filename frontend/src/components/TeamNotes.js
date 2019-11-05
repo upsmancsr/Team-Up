@@ -79,7 +79,7 @@ function TeamNotes(props) {
             <h4>Notes:</h4>
             <form className={styles.newNoteForm} onSubmit={handleSubmit}>
                 <p>Post a new note:</p>
-                <div>
+                <div className={styles.inputRow}>
                     <label htmlFor="titleInput">Title</label>
                     <input
                         onChange={setInput(setTitleInput)}
@@ -89,7 +89,7 @@ function TeamNotes(props) {
                         type="text"
                     />
                 </div>
-                <div>
+                <div className={styles.inputRow}>
                     <label htmlFor="contentInput">Content</label>
                     <input
                         onChange={setInput(setContentInput)}

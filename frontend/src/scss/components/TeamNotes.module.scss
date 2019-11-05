@@ -9,6 +9,18 @@
 .newNoteForm {
 	height: 150px;
 	padding: 0 10px 0 10px;
+
+	.inputRow {
+		margin: 5px;
+		width: 250px;
+		display: flex;
+		justify-content: space-between;
+
+		input {
+			margin: 0 0 0 5px;
+			width: 170px;
+		}
+	}
 }
 
 .tagUserMenu {
