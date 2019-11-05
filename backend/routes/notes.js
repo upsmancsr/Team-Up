@@ -23,7 +23,7 @@ router.get('/:teamId', async (req, res) => {
 // Create a new note:
 router.post('/newnote', async (req, res) => {
     try {
-        const { authorId: author, teamId: team, title, content } = req.body;
+        const { authorId: author, teamId: team, title, content, taggedUsers } = req.body;
 
         const newNote = new Note({
             title,
@@ -31,6 +31,13 @@ router.post('/newnote', async (req, res) => {
             author,
             team
         });
+
+        // Push tagged users (_id) into newNote taggedUsers array field:
+        if (taggedUsers.length) {
+            taggedUsers.forEach(id => {
+                newNote.taggedUsers.push(id);
+            });
+        }
 
         // save new note in db:
         const note = await newNote.save();
