@@ -75,7 +75,7 @@ class TeamDashboard extends Component {
                 </div>
             </div>
             <div className={styles.rightContainer}>
-                    <TeamNotes teamId={team._id} />
+                    <TeamNotes team={team} />
             </div>
         </div>
     );

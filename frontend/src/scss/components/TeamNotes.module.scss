@@ -1,17 +1,25 @@
 .TeamNotes {
-	padding: 10px;
+	padding: 10px 3px 0 10px;
 	height: 100%;
 }
 
 .newNoteForm {
-	height: 100px;
+	height: 150px;
+	padding: 0 10px 0 10px;
+}
+
+.tagUserMenu {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
 }
 
 .notesList {
-	height: calc(65% - 20px);
+	height: calc(60% - 20px);
 	overflow-y: scroll;
 	padding: 5px;
 	border: 1px solid lightgrey;
+	border-radius: 5px;
 }
 
 .noteCard {
