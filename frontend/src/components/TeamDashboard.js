@@ -35,8 +35,9 @@ class TeamDashboard extends Component {
     return (
         team &&
         <div className={styles.TeamDashboard}>
+            <h3>Team Name: <b>{team.name}</b></h3>
+            <div className={styles.mainContainer}>
             <div className={styles.leftContainer}>
-                <h3>Team Name: <b>{team.name}</b></h3>
                 <div className={styles.teamMembersContainer}>
                     <p>Team members:</p>
                     <div className={styles.teamMembersList}>
@@ -76,6 +77,7 @@ class TeamDashboard extends Component {
             </div>
             <div className={styles.rightContainer}>
                     <TeamNotes team={team} />
+            </div>
             </div>
         </div>
     );

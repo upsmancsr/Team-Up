@@ -1,28 +1,36 @@
 .TeamDashboard {
 	height: 100vh;
 	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+.mainContainer {
+	display: flex;
 	justify-content: flex-start;
 }
 
 .leftContainer {
 	padding: 10px;
-	width: 40%;
+	width: 30%;
+	height: 100%;
 }
 
 .rightContainer {
-	padding: 20px;
-	width: 60%;
+	padding: 10px;
+	width: 70%;
+	height: 100vh;
 }
 
 .teamMembersContainer {
 	width: 300px;
 	display: flex;
 	flex-direction: column;
-}
-
-a {
-	text-decoration: none;
-	color: black;
 }
 
 .teamMembersList .row {
