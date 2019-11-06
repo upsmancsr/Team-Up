@@ -19,7 +19,6 @@ const NavNonAuth = () => (
     <div className='nav-non-auth-container'>
         <span>
             {styledNavLink('/', 'Home', 'exact')}
-            {styledNavLink('/useraccount', 'Account')}
             {styledNavLink('/signup', 'Sign Up')}
             {styledNavLink('/signin', 'Sign In')}
         </span>

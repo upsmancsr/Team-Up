@@ -1,9 +1,59 @@
 .TeamNotes {
-	padding: 10px;
+	padding: 0px 3px 0 10px;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
 }
 
-.noteContainer {
+h4 {
+	margin: 5px;
+}
+.newNoteForm {
+	height: 150px;
+	padding: 0 10px 0 10px;
+
+	.inputRow {
+		margin: 5px;
+		width: 250px;
+		display: flex;
+		justify-content: space-between;
+
+		input {
+			margin: 0 0 0 5px;
+			width: 170px;
+		}
+	}
+}
+
+.tagUserMenu {
+	position: relative;
+
+	.tagMenuDropDown {
+		z-index: 100;
+		position: absolute;
+		top: 0;
+		left: 70px;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		border: 1px solid grey;
+		border-radius: 5px;
+		background-color: lightgrey;
+	}
+}
+
+.notesList {
+	height: calc(60%);
+	overflow-y: scroll;
+	padding: 5px;
+	border: 1px solid lightgrey;
+	border-radius: 5px;
+}
+
+.noteCard {
 	border: 1px solid grey;
 	border-radius: 10px;
+	margin: 5px 0 5px 0;
 	padding: 0 10px 0 10px;
 }

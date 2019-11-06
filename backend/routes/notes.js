@@ -9,9 +9,7 @@ const Note = require('../schemas/Note');
 router.get('/:teamId', async (req, res) => {
     try {
         const { teamId } = req.params;
-        const notes = await Note.find({ team: teamId }).populate('author');
-        // console.log('user:', user);
-        // console.log('teams:', teams);
+        const notes = await Note.find({ team: teamId }).populate('author taggedUsers');
         res.status(200).json(notes);
     }
     catch(error) {
@@ -23,7 +21,7 @@ router.get('/:teamId', async (req, res) => {
 // Create a new note:
 router.post('/newnote', async (req, res) => {
     try {
-        const { authorId: author, teamId: team, title, content } = req.body;
+        const { authorId: author, teamId: team, title, content, taggedUsers } = req.body;
 
         const newNote = new Note({
             title,
@@ -31,6 +29,13 @@ router.post('/newnote', async (req, res) => {
             author,
             team
         });
+
+        // Push tagged users (_id) into newNote taggedUsers array field:
+        if (taggedUsers.length) {
+            taggedUsers.forEach(id => {
+                newNote.taggedUsers.push(id);
+            });
+        }
 
         // save new note in db:
         const note = await newNote.save();
