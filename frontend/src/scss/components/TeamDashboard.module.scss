@@ -33,11 +33,18 @@ a {
 	flex-direction: column;
 }
 
-.teamMembersList .row {
-	border: 1px solid grey;
-	border-radius: 10px;
-	padding: 0 12px 0 12px;
-	margin-bottom: 10px;
+.teamMembersList {
+	display: flex;
+	flex-direction: column;
+
+	.userCard {
+		width: 100%;
+		max-width: 200px;
+		padding: 0 12px 12px 12px;
+		margin-bottom: 10px;
+		border: 1px solid grey;
+		border-radius: 10px;
+	}
 }
 
 .teamActionsContainer {

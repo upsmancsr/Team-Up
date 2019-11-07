@@ -38,8 +38,8 @@ function RemoveUserDialog(props) {
     
     return (
         <div>
-          <Button variant="outlined" color="secondary" onClick={handleClickOpen}>
-                Remove User
+          <Button variant='outlined' color='secondary' size='small' onClick={handleClickOpen}>
+                Remove
           </Button>
           
           <Dialog

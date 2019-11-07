@@ -9,9 +9,10 @@
 h4 {
 	margin: 5px;
 }
+
 .newNoteForm {
 	height: 150px;
-	padding: 0 10px 0 10px;
+	padding: 0 10px 10px 10px;
 
 	.inputRow {
 		margin: 5px;
@@ -23,6 +24,10 @@ h4 {
 			margin: 0 0 0 5px;
 			width: 170px;
 		}
+	}
+
+	button {
+		margin: 5px 0 5px 0;
 	}
 }
 
