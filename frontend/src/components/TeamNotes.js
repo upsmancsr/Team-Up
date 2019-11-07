@@ -27,8 +27,6 @@ function TeamNotes(props) {
             .catch(error => {
                 console.log(error);
             })
-
-        // console.log(taggedUsers);
     }, [props.team]);
 
     const setInput = set => event => {
@@ -47,7 +45,6 @@ function TeamNotes(props) {
             }; 
         });
         setTaggedUsers(users);
-        // console.log(taggedUsers);
     };
 
     const handleSubmit = event => {
@@ -100,7 +97,7 @@ function TeamNotes(props) {
                     />
                 </div>
                 <div className={styles.tagUserMenu}>
-                    <button className={styles.tagUserMenuBtn} onClick={handleToggleTagMenu}>
+                    <button className={styles.tagUserMenuBtn} type='button' onClick={handleToggleTagMenu}>
                         Tag users
                     </button>
                     {tagMenuOpen && 
