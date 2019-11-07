@@ -44,7 +44,7 @@ class TeamDashboard extends Component {
                         {team &&
                         team.users.map((user, index) => {
                             return (
-                                <div className={styles.row} key={index}>
+                                <div className={styles.userCard} key={index}>
                                     <p>{user.firstName} {user.lastName}</p>
                                     <p>{user.email}</p>
                                     {(team.adminUsers.includes(this.props.user.id) && !team.adminUsers.includes(user._id)) ? (
