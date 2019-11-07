@@ -13,6 +13,7 @@ h4 {
 .newNoteForm {
 	height: 150px;
 	padding: 0 10px 10px 10px;
+	border-top: 1px solid grey;
 
 	.inputRow {
 		margin: 5px;
@@ -49,11 +50,12 @@ h4 {
 }
 
 .notesList {
-	height: calc(60%);
+	flex-grow: 1;
+	// height: calc(60% * (100% - 185px));
 	overflow-y: scroll;
 	padding: 5px;
-	border: 1px solid lightgrey;
-	border-radius: 5px;
+	margin: 0 0 12px 0;
+	border: 2px solid grey;
 }
 
 .noteCard {

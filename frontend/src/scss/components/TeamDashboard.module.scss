@@ -1,5 +1,9 @@
 .TeamDashboard {
-	height: 100vh;
+	position: fixed;
+	bottom: 0%;
+	width: 100%;
+	height: calc(100vh - 80px);
+	// height: calc(100vh - 61px);
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
@@ -11,6 +15,7 @@ a {
 }
 
 .mainContainer {
+	height: 100%;
 	display: flex;
 	justify-content: flex-start;
 }
@@ -24,7 +29,7 @@ a {
 .rightContainer {
 	padding: 10px;
 	width: 70%;
-	height: 100vh;
+	height: 100%;
 }
 
 .teamMembersContainer {
