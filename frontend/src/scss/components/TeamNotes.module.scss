@@ -51,16 +51,16 @@ h4 {
 
 .notesList {
 	flex-grow: 1;
-	// height: calc(60% * (100% - 185px));
 	overflow-y: scroll;
 	padding: 5px;
 	margin: 0 0 12px 0;
-	border: 2px solid grey;
+	border-radius: 5px;
+	background-color: #ebecf0;
 }
 
 .noteCard {
-	border: 1px solid grey;
-	border-radius: 10px;
-	margin: 5px 0 5px 0;
-	padding: 0 10px 0 10px;
+	background-color: white;
+	border-radius: 5px;
+	margin: 0 0 5px 0;
+	padding: 5px 10px 5px 10px;
 }

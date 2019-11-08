@@ -7,7 +7,8 @@ const LandingPage = () => {
     return (
         <div className={styles.LandingPage}>
             <section className={styles.headerSection}>
-                <p>Welcome to TeamUp! Create teams, invite friends, and start collaborating.</p>
+                <p>Welcome to TeamUp!</p>
+                <p>Create teams, invite friends, and start collaborating</p>
                 <Link to='/signup' className={styles.getStartedBtn}>
                     Get Started
                 </Link>
