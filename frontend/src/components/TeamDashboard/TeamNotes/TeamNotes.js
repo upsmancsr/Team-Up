@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import NoteCard from './NoteCard';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
-import styles from '../scss/components/TeamNotes.module.scss';
+import styles from './styles/TeamNotes.module.scss';
 
 function TeamNotes(props) {
     const [notes, setNotes] = useState([]);
@@ -131,12 +132,7 @@ function TeamNotes(props) {
                 {notes.length ? (
                     notes.map((note, index) => {
                         return (
-                            <div className={styles.noteCard} key={index}>
-                                <p>Posted by: <b>{note.author.firstName} {note.author.lastName}</b></p>
-                                <p>Title: <b>{note.title}</b></p>
-                                <p>Tagged: {note.taggedUsers.map((user, index) => <span key={index}>{'@'}{user.firstName}{' '}{user.lastName}{' '}</span>)}</p>
-                                <p>{note.content}</p>
-                            </div>
+                            <NoteCard note={note} key={index} />
                         )
                     })
                     

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 // import { withRouter } from 'react-router-dom';
-import InviteDialog from './Dialogs/InviteDialog';
-import LeaveDialog from './Dialogs/LeaveDialog';
-import DeleteTeamDialog from './Dialogs/DeleteTeamDialog';
-import RemoveUserDialog from './Dialogs/RemoveUserDialog';
-import TeamNotes from './TeamNotes';
+import InviteDialog from '../Dialogs/InviteDialog';
+import LeaveDialog from '../Dialogs/LeaveDialog';
+import DeleteTeamDialog from '../Dialogs/DeleteTeamDialog';
+import RemoveUserDialog from '../Dialogs/RemoveUserDialog';
+import TeamNotes from './TeamNotes/TeamNotes.js';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import styles from '../scss/components/TeamDashboard.module.scss';
+import styles from './styles/TeamDashboard.module.scss';
 
 class TeamDashboard extends Component {
   constructor(props) {
