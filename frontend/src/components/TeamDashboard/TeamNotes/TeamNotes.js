@@ -125,8 +125,9 @@ function TeamNotes(props) {
                     </button>
                 </div>
             </form>
-
+            
             <NotesList notes={notes} />
+            
         </div>
     );
 };
