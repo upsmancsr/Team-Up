@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import NoteCard from './NoteCard';
+import NotesList from './NotesList';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
@@ -120,26 +120,13 @@ function TeamNotes(props) {
                     }
                 </div>
                 <div>
-                    <button
-                        type="submit"
-                    >
+                    <button type="submit">
                         Post Note
                     </button>
                 </div>
             </form>
 
-            <div className={styles.notesList}>
-                {notes.length ? (
-                    notes.map((note, index) => {
-                        return (
-                            <NoteCard note={note} key={index} />
-                        )
-                    })
-                    
-                ) : (
-                    <p>No notes</p>
-                )}
-            </div>
+            <NotesList notes={notes} />
         </div>
     );
 };
