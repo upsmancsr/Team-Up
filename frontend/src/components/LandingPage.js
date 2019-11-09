@@ -1,12 +1,18 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
+import styles from '../scss/components/LandingPage.module.scss';
+
 const LandingPage = () => {
     return (
-        <div className='landing-page-container'>
-            <header className='landing-page-header'>
-                Welcome to TeamUp. Create teams, invite friends, and start collaborating.
-            </header>
+        <div className={styles.LandingPage}>
+            <section className={styles.headerSection}>
+                <p>Welcome to TeamUp!</p>
+                <p>Create teams, invite friends, and start collaborating</p>
+                <Link to='/signup' className={styles.getStartedBtn}>
+                    Get Started
+                </Link>
+            </section>
         </div>
     );
 }

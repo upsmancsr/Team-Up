@@ -10,7 +10,7 @@ import SignUp from './components/auth/SignUp';
 import SignIn from './components/auth/SignIn';
 import MyTeams from './components/MyTeams';
 import MyInvitations from './components/MyInvitations';
-import TeamDashboard from './components/TeamDashboard';
+import TeamDashboard from './components/TeamDashboard/TeamDashboard.js';
 import './App.css';
 
 import { connect } from 'react-redux';

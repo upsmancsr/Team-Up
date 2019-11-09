@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import NotesList from './NotesList';
 import { connect } from 'react-redux';
+import { getTeamNotes } from '../../../Redux/reducers/teamNotes.js';
 import axios from 'axios';
 
-import styles from '../scss/components/TeamNotes.module.scss';
+import styles from './styles/TeamNotes.module.scss';
 
 function TeamNotes(props) {
     const [notes, setNotes] = useState([]);
@@ -26,7 +28,7 @@ function TeamNotes(props) {
             })
             .catch(error => {
                 console.log(error);
-            })
+            });
     }, [props.team]);
 
     const setInput = set => event => {
@@ -119,40 +121,24 @@ function TeamNotes(props) {
                     }
                 </div>
                 <div>
-                    <button
-                        type="submit"
-                    >
+                    <button type="submit">
                         Post Note
                     </button>
                 </div>
             </form>
-
-            <div className={styles.notesList}>
-                {notes.length ? (
-                    notes.map((note, index) => {
-                        return (
-                            <div className={styles.noteCard} key={index}>
-                                <p>Posted by: <b>{note.author.firstName} {note.author.lastName}</b></p>
-                                <p>Title: <b>{note.title}</b></p>
-                                <p>Tagged: {note.taggedUsers.map((user, index) => <span key={index}>{'@'}{user.firstName}{' '}{user.lastName}{' '}</span>)}</p>
-                                <p>{note.content}</p>
-                            </div>
-                        )
-                    })
-                    
-                ) : (
-                    <p>No notes</p>
-                )}
-            </div>
+            
+            <NotesList notes={notes} />
+            
         </div>
     );
 };
 
 const mapStateToProps = state => ({
-    user: state.user
+    user: state.user,
+    notes: state.notes
 });
 
 export default connect(
     mapStateToProps,
-    null
+    { getTeamNotes }
 )(TeamNotes);

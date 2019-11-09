@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 // import { withRouter } from 'react-router-dom';
-import InviteDialog from './Dialogs/InviteDialog';
-import LeaveDialog from './Dialogs/LeaveDialog';
-import DeleteTeamDialog from './Dialogs/DeleteTeamDialog';
-import RemoveUserDialog from './Dialogs/RemoveUserDialog';
-import TeamNotes from './TeamNotes';
+import InviteDialog from '../Dialogs/InviteDialog';
+import LeaveDialog from '../Dialogs/LeaveDialog';
+import DeleteTeamDialog from '../Dialogs/DeleteTeamDialog';
+import RemoveUserDialog from '../Dialogs/RemoveUserDialog';
+import TeamNotes from './TeamNotes/TeamNotes.js';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import styles from '../scss/components/TeamDashboard.module.scss';
+import styles from './styles/TeamDashboard.module.scss';
 
 class TeamDashboard extends Component {
   constructor(props) {
@@ -22,7 +22,7 @@ class TeamDashboard extends Component {
     const { teamId } = this.props.match.params;
     axios.get(`/api/teams/singleteam/${teamId}`)
       .then(response => {
-        this.setState({ team: response.data });
+        this.setState({ team: response.data },() => console.log('TeamDash state.team:', this.state.team));
       })
       .catch(error => {
         console.log(error);
@@ -35,11 +35,11 @@ class TeamDashboard extends Component {
     return (
         team &&
         <div className={styles.TeamDashboard}>
-            <h3>Team Name: <b>{team.name}</b></h3>
+            <h3>Team: <b>{team.name}</b></h3>
             <div className={styles.mainContainer}>
             <div className={styles.leftContainer}>
                 <div className={styles.teamMembersContainer}>
-                    <p>Team members:</p>
+                    <p>Members:</p>
                     <div className={styles.teamMembersList}>
                         {team &&
                         team.users.map((user, index) => {

@@ -1,0 +1,25 @@
+.LandingPage {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.headerSection {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.getStartedBtn {
+	width: 100px;
+	height: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #5eb54a;
+	border-radius: 5px;
+	text-decoration: none;
+	cursor: pointer;
+}
