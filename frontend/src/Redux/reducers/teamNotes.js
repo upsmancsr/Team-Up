@@ -27,7 +27,7 @@ export const getTeamNotes = teamId => async dispatch => {
 };
 
 export const addTeamNote = noteData => async dispatch => {   // newNote contains teamId, title, content, tagged users
-    const notes = await axios.post('api/notes/newnote', noteData); // Created new note and gets all notes in response
+    const notes = await axios.post('api/notes/newnote', noteData); // Creates new note and gets all notes in response
     dispatch({ 
         type: SET_TEAM_NOTES, 
         payload: notes.data 

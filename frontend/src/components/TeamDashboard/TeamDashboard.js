@@ -22,7 +22,7 @@ class TeamDashboard extends Component {
     const { teamId } = this.props.match.params;
     axios.get(`/api/teams/singleteam/${teamId}`)
       .then(response => {
-        this.setState({ team: response.data });
+        this.setState({ team: response.data },() => console.log('TeamDash state.team:', this.state.team));
       })
       .catch(error => {
         console.log(error);

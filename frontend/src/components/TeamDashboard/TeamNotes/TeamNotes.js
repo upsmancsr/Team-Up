@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import NotesList from './NotesList';
 import { connect } from 'react-redux';
+import { getTeamNotes } from '../../../Redux/reducers/teamNotes.js';
 import axios from 'axios';
 
 import styles from './styles/TeamNotes.module.scss';
@@ -27,7 +28,7 @@ function TeamNotes(props) {
             })
             .catch(error => {
                 console.log(error);
-            })
+            });
     }, [props.team]);
 
     const setInput = set => event => {
@@ -133,10 +134,11 @@ function TeamNotes(props) {
 };
 
 const mapStateToProps = state => ({
-    user: state.user
+    user: state.user,
+    notes: state.notes
 });
 
 export default connect(
     mapStateToProps,
-    null
+    { getTeamNotes }
 )(TeamNotes);
