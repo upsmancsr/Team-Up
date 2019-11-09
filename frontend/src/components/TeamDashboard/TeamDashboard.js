@@ -35,11 +35,11 @@ class TeamDashboard extends Component {
     return (
         team &&
         <div className={styles.TeamDashboard}>
-            <h3>Team Name: <b>{team.name}</b></h3>
+            <h3>Team: <b>{team.name}</b></h3>
             <div className={styles.mainContainer}>
             <div className={styles.leftContainer}>
                 <div className={styles.teamMembersContainer}>
-                    <p>Team members:</p>
+                    <p>Members:</p>
                     <div className={styles.teamMembersList}>
                         {team &&
                         team.users.map((user, index) => {
