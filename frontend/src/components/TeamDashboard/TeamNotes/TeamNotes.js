@@ -7,28 +7,29 @@ import axios from 'axios';
 import styles from './styles/TeamNotes.module.scss';
 
 function TeamNotes(props) {
-    const [notes, setNotes] = useState([]);
+    // const [notes, setNotes] = useState([]);
     const [titleInput, setTitleInput] = useState('');
     const [contentInput, setContentInput] = useState('');
     const [taggedUsers, setTaggedUsers] = useState([]);
     const [tagMenuOpen, setTagMenuOpen] = useState(false)
 
     useEffect(() => {
-        const users = props.team.users.map(user => {
+        const taggedUsers = props.team.users.map(user => {
             return user = {
                 ...user,
                 tagged: false
             };
         });
-        setTaggedUsers(users);
-        axios.get(`api/notes/${props.team._id}`)
-            .then(response => {
-                console.log(response.data);
-                setNotes(response.data); 
-            })
-            .catch(error => {
-                console.log(error);
-            });
+        setTaggedUsers(taggedUsers);
+        // axios.get(`api/notes/${props.team._id}`)
+        //     .then(response => {
+        //         console.log(response.data);
+        //         setNotes(response.data); 
+        //     })
+        //     .catch(error => {
+        //         console.log(error);
+        //     });
+        props.getTeamNotes(props.team._id);
     }, [props.team]);
 
     const setInput = set => event => {
@@ -60,15 +61,16 @@ function TeamNotes(props) {
             taggedUsers: taggedUserIds
         }
 
-        axios.post('api/notes/newnote', noteData)
-            .then(response => {
-                setTitleInput('');
-                setContentInput('');
-                setNotes(response.data.notes);
-            })
-            .catch(error => {
-                console.log(error);
-            });
+        // axios.post('api/notes/newnote', noteData)
+        //     .then(response => {
+        //         setTitleInput('');
+        //         setContentInput('');
+        //         setNotes(response.data.notes);
+        //     })
+        //     .catch(error => {
+        //         console.log(error);
+        //     });
+        props.addTeamNote(noteData);
 
         event.preventDefault();
     };
@@ -127,7 +129,7 @@ function TeamNotes(props) {
                 </div>
             </form>
             
-            <NotesList notes={notes} />
+            <NotesList notes={props.notes} />
             
         </div>
     );
