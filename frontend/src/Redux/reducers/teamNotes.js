@@ -20,7 +20,7 @@ export default (state = initialState, action) => {
 
 export const getTeamNotes = teamId => async dispatch => {
     const notes = await axios.get(`api/notes/${teamId}`);
-    console.log('notes from getTeamNotes redux action: ', notes);
+    console.log('notes from getTeamNotes redux action: ', notes.data);
     dispatch({ 
         type: SET_TEAM_NOTES, 
         payload: notes.data 

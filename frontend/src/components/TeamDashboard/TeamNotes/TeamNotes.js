@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import NotesList from './NotesList';
 import { connect } from 'react-redux';
-import { getTeamNotes } from '../../../Redux/reducers/teamNotes.js';
+import { getTeamNotes, addTeamNote } from '../../../Redux/reducers/teamNotes.js';
 import axios from 'axios';
 
 import styles from './styles/TeamNotes.module.scss';
@@ -29,7 +29,7 @@ function TeamNotes(props) {
         //     .catch(error => {
         //         console.log(error);
         //     });
-        props.getTeamNotes(props.team._id);
+        // props.getTeamNotes(props.team._id);
     }, [props.team]);
 
     const setInput = set => event => {
@@ -128,19 +128,17 @@ function TeamNotes(props) {
                     </button>
                 </div>
             </form>
-            
-            <NotesList notes={props.notes} />
+                <NotesList teamId={props.team._id}/>
             
         </div>
     );
 };
 
 const mapStateToProps = state => ({
-    user: state.user,
-    notes: state.notes
+    user: state.user
 });
 
 export default connect(
     mapStateToProps,
-    { getTeamNotes }
+    { getTeamNotes, addTeamNote }
 )(TeamNotes);
