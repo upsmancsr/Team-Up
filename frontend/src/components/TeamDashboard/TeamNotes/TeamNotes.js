@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import NotesList from './NotesList';
 import { connect } from 'react-redux';
 import { getTeamNotes, addTeamNote } from '../../../Redux/reducers/teamNotes.js';
-import { TeamNotesContext } from '../../../ContextProviders/TeamNotesProvider';
 
-import axios from 'axios';
+// import axios from 'axios';
 
 import styles from './styles/TeamNotes.module.scss';
 
@@ -54,7 +53,7 @@ function TeamNotes(props) {
 
     const handleSubmit = event => {
         const taggedUserIds = taggedUsers.filter(user => user.tagged === true).map(user => user._id);
-        console.log(taggedUserIds);
+        // console.log(taggedUserIds);
         const noteData = {
             title: titleInput,
             content: contentInput,
