@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import NotesList from './NotesList';
 import { connect } from 'react-redux';
 import { getTeamNotes, addTeamNote } from '../../../Redux/reducers/teamNotes.js';
+import { TeamNotesContext } from '../../../ContextProviders/TeamNotesProvider';
+
 import axios from 'axios';
 
 import styles from './styles/TeamNotes.module.scss';
