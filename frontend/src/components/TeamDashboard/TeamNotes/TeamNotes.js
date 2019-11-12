@@ -31,7 +31,7 @@ function TeamNotes(props) {
         //     .catch(error => {
         //         console.log(error);
         //     });
-        // props.getTeamNotes(props.team._id);
+        props.getTeamNotes(props.team._id);
     }, [props.team]);
 
     const setInput = set => event => {
@@ -130,14 +130,15 @@ function TeamNotes(props) {
                     </button>
                 </div>
             </form>
-                <NotesList teamId={props.team._id}/>
+                <NotesList notes={props.notes}/>
             
         </div>
     );
 };
 
 const mapStateToProps = state => ({
-    user: state.user
+    user: state.user,
+    notes: state.teamNotes.notes
 });
 
 export default connect(

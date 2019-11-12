@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';             // Global Redux provider
-import ContextProviders from './ContextProviders';  // Specific Context providers
+// import ContextProviders from './ContextProviders';  // Specific Context providers
 import store from './Redux/store';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
@@ -19,11 +19,11 @@ axios.defaults.baseURL =
 
 ReactDOM.render(
   <Provider store={store}>
-    <ContextProviders>
+    {/* <ContextProviders> */}
       <FirebaseContext.Provider value={new Firebase()}>
         <App />
       </FirebaseContext.Provider>
-    </ContextProviders>
+    {/* </ContextProviders> */}
   </Provider>,
   document.getElementById('root')
 );
