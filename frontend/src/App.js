@@ -60,6 +60,7 @@ class AppComponent extends Component {
   render() {
 
     return (
+      <AuthUserContext.Provider value={this.state.authUser}>
       <div className='App'>
         <Router>
           <NavBar />
@@ -75,6 +76,7 @@ class AppComponent extends Component {
           </div>
         </Router>
       </div>
+      </AuthUserContext.Provider>
     );
   };
 };
