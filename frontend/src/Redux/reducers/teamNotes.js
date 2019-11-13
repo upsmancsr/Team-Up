@@ -20,6 +20,7 @@ export default (state = initialState, action) => {
 
 export const getTeamNotes = teamId => async dispatch => {
     const notes = await axios.get(`api/notes/${teamId}`);
+    // console.log('getTeamNotes redux action, notes API response: ', notes.data);
     dispatch({ 
         type: SET_TEAM_NOTES, 
         payload: notes.data 
@@ -28,9 +29,10 @@ export const getTeamNotes = teamId => async dispatch => {
 
 export const addTeamNote = noteData => async dispatch => {   // newNote contains teamId, title, content, tagged users
     const notes = await axios.post('api/notes/newnote', noteData); // Creates new note and gets all notes in response
+    console.log('addTeamNote redux action, notes API response: ', notes.data.notes);
     dispatch({ 
         type: SET_TEAM_NOTES, 
-        payload: notes.data 
+        payload: notes.data.notes
     });
 };
 

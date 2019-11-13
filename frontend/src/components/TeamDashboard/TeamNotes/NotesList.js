@@ -13,7 +13,6 @@ const NotesList = props => {
                         <NoteCard note={note} key={index} />
                     )
                 })
-                
             ) : (
                 <p>No notes</p>
             )}
