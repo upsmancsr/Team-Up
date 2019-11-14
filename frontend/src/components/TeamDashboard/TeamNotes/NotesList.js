@@ -11,6 +11,16 @@ const NotesList = props => {
         setShowTaggged(!showTagged);
     };
 
+    const filteredNotes = notes.filter(note => {
+        if (!showTagged) {
+            return true;
+        }
+        if (showTagged && note.taggedUsers.find(tg => tg._id === user.id)) {
+            return true;
+        }
+        return false;
+    });
+
     return (
         <div className={styles.NotesList}>
             <label>
@@ -23,13 +33,11 @@ const NotesList = props => {
                 <b>Show notes I'm tagged in</b>
             </label>
 
-            {notes.length ? (
-                notes.map((note, index) => {
-                    if (!showTagged || (showTagged && note.taggedUsers.includes(user.id))) {
-                        return (
-                            <NoteCard note={note} key={index} />
-                        );
-                    }
+            {filteredNotes.length ? (
+                filteredNotes.map((note, index) => {
+                    return (
+                        <NoteCard note={note} key={index} />
+                    );
                 })
             ) : (
                 <p>No notes</p>
