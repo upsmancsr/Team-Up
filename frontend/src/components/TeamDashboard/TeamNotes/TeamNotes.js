@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import NewNoteForm from './NewNoteForm';
 import NotesList from './NotesList';
 import { connect } from 'react-redux';
@@ -15,7 +15,7 @@ function TeamNotes(props) {
         <div className={styles.TeamNotes}>
             <h4>Notes:</h4>
             <NewNoteForm user={props.user} team={props.team} addTeamNote={props.addTeamNote} />
-            <NotesList notes={props.notes}/>
+            <NotesList user={props.user} notes={props.notes}/>
         </div>
     );
 };
