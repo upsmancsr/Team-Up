@@ -41,7 +41,7 @@ router.post('/newnote', async (req, res) => {
         const note = await newNote.save();
 
         // Get all notes for the team (to include new note):
-        const notes = await Note.find({ team }).populate('author');
+        const notes = await Note.find({ team }).populate('author taggedUsers');
 
         res.status(200).json({ message: 'Note saved in database.', notes });
     }

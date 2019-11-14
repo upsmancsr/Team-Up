@@ -43,7 +43,6 @@ const NewNoteForm = props => {
     // method to submit new note:
     const handleSubmit = event => {
         const taggedUserIds = taggedUsers.filter(user => user.tagged === true).map(user => user._id);
-        // console.log(taggedUserIds);
         const noteData = {
             title: titleInput,
             content: contentInput,
