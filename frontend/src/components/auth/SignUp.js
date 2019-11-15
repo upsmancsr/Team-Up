@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { withFirebase } from '../contexts/firebase';
 import axios from 'axios';
 
-import './css/auth.css';
+import styles from './styles/SignUp.module.scss';
 
 class SignUpComponent extends Component {
     constructor(props) {
@@ -69,19 +69,18 @@ class SignUpComponent extends Component {
     render() {
         const { errors } = this.state;
         return (
-            <div className='container'>
-                <div className='row'>
+            <div className={styles.SignUp}>
+                <div className={styles.signUpForm}>
                     <div>
                         <div>
-                            <h4>
-                                <b>Sign up</b> below
-                            </h4>
+                            <h4>Sign Up</h4>
                             <p>
                                 Already have an account? <Link to='/signin'>Sign in</Link>
                             </p>
                         </div>
                         <form noValidate onSubmit={this.onSubmit}>
-                            <div>
+                            <div className={styles.inputRow}>
+                                <label htmlFor='firstName'>First Name</label>
                                 <input
                                     onChange={this.onChange}
                                     value={this.state.firstName}
@@ -89,9 +88,9 @@ class SignUpComponent extends Component {
                                     id='firstName'
                                     type='text'
                                 />
-                                <label htmlFor='firstName'>First Name</label>
                             </div>
-                            <div>
+                            <div className={styles.inputRow}>
+                                <label htmlFor='lastName'>Last Name</label>
                                 <input
                                     onChange={this.onChange}
                                     value={this.state.lastName}
@@ -99,9 +98,9 @@ class SignUpComponent extends Component {
                                     id='lastName'
                                     type='text'
                                 />
-                                <label htmlFor='lastName'>Last Name</label>
                             </div>
-                            <div>
+                            <div className={styles.inputRow}>
+                                <label htmlFor='email'>Email</label>
                                 <input
                                     onChange={this.onChange}
                                     value={this.state.email}
@@ -109,9 +108,9 @@ class SignUpComponent extends Component {
                                     id='email'
                                     type='email'
                                 />
-                                <label htmlFor='email'>Email</label>
                             </div>
-                            <div>
+                            <div className={styles.inputRow}>
+                                <label htmlFor='password'>Password</label>
                                 <input
                                     onChange={this.onChange}
                                     value={this.state.password}
@@ -119,9 +118,9 @@ class SignUpComponent extends Component {
                                     id='password'
                                     type='password'
                                 />
-                                <label htmlFor='password'>Password</label>
                             </div>
-                            <div>
+                            <div className={styles.inputRow}>
+                                <label htmlFor='password2'>Confirm Password</label>
                                 <input
                                     onChange={this.onChange}
                                     value={this.state.password2}
@@ -129,7 +128,6 @@ class SignUpComponent extends Component {
                                     id='password2'
                                     type='password'
                                 />
-                                <label htmlFor='password2'>Confirm Password</label>
                             </div>
                             <div>
                                 <button
