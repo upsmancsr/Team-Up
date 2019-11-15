@@ -51,6 +51,9 @@ const NewNoteForm = props => {
             taggedUsers: taggedUserIds
         };
         props.addTeamNote(noteData);
+        setTitleInput('');
+        setContentInput('');
+        setTagMenuOpen('false');
         event.preventDefault();
     };
 
